@@ -1,0 +1,9 @@
+{
+  "generator-node": {
+    "promptValues": {
+      "authorName": "Andrey Kuzmin",
+      "authorEmail": "kinjeiro@gmail.com",
+      "authorUrl": ""
+    }
+  }
+}

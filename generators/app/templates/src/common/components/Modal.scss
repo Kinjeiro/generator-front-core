@@ -1,0 +1,14 @@
+.CoreModal {
+  &__content {
+    padding: 2%;
+  }
+
+  &__closer {
+    font-family: Icons;
+    font-size: 1.5em;
+
+    &:before {
+      content: "\f00d";
+    }
+  }
+}

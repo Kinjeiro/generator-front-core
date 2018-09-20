@@ -1,0 +1,87 @@
+// todo @ANKU @CRIT @MAIN - не работает проставнока из значений
+@import "~@reagentum/frontCore_Components/lib/common/app-styles/vars";
+
+// ======================================================
+// COLORS
+// ======================================================
+$color-default-text: #000;
+$color-default-background: #fff;
+$color-text-description: lighten($color-default-text, 70%);
+$color-placeholder: lighten($color-default-text, 80%);
+$color-background-hover: lighten($color-default-text, 90%);
+
+$color-primary: #7AC74F;
+$color-primary-text: #fff;
+
+$color-error-text: #EF3E36;
+$color-error-background: transparent;
+$color-error-border: $color-error-text;
+
+$color-warn-text: #EAC435;
+$color-warn-background: transparent;
+$color-warn-border: $color-error-text;
+
+$color-border: #98989A;
+$color-border-hover: #000;
+$color-border-menu: #98989A;
+
+
+// todo @ANKU @LOW - цвета и иконки
+$color-facebook: #0060ff;
+$color-google: #388fff;
+
+
+// ======================================================
+// FONTS
+// ======================================================
+/*
+px – абсолютные пиксели, к которым привязаны и потому не нужны mm, cm, pt (4/3 px) и pc. Используется для максимально конкретного и точного задания размеров.
+em – задаёт размер относительно шрифта родителя, можно относительно конкретных символов: "x"(ex) и "0"(ch), используется там, где нужно упростить масштабирование компоненты.
+rem – задаёт размер относительно шрифта <html>, используется для удобства глобального масштабирования: элементы которые планируется масштабировать, задаются в rem, а JS меняет шрифт у <html>.
+% – относительно такого же свойства родителя (как правило, но не всегда), используется для ширин, высот и так далее, без него никуда, но надо знать, относительно чего он считает проценты.
+vw, vh, vmin, vmax – относительно размера экрана.
+
+пиксели – это каменный век, не используйте их;
+используйте REM для размеров шрифтов и отступов;
+используйте EM для медиа запросов.
+*/
+
+$font-family: "Arial";
+$font-line-height: 1.5555555;
+
+$font-size-base: 18px;
+$font-size-base-mobile: 16px;
+
+$font-size: 1rem;
+
+/*
+Default style sheet for HTML 4:
+
+h1              { font-size: 2em; margin: .67em 0 }
+h2              { font-size: 1.5em; margin: .75em 0 }
+h3              { font-size: 1.17em; margin: .83em 0 }
+h4              { font-size: 1em; margin: 1em 0 }
+h5              { font-size: .83em; margin: 1.5em 0 }
+h6              { font-size: .75em; margin: 1.67em 0 }
+
+h1, h2, h3, h4, h5, h6 { font-weight: bolder }
+*/
+// Расчет по Фибоначи
+$font-size-h1: 2rem; // 36px;
+$font-size-h2: 1.61rem; // 29px;
+$font-size-h3: 1.22rem; // 22px;
+$font-size-h4: 1rem; // 18px;
+// оставим как было
+$font-size-h5: .83rem; // 14.94px;
+$font-size-h6: .75rem; // 13.5px;
+$font-weight-header: 800; // extrabold
+
+$font-size-logo-big: $font-size-h1; // 36px;
+$font-size-logo: 1.33rem; // 24px;
+
+$font-weight-label: $font-weight-header;
+
+// ======================================================
+// SIZE
+// ======================================================
+$width-app-max: 1400px;

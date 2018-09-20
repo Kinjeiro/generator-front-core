@@ -1,0 +1,19 @@
+//@import "../../app-styles/vars";
+
+.FormLayout {
+  &__fields {
+    & > *:not(:last-child) {
+      margin-bottom: 0.9em;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: row-reverse;
+    margin-top: 2em;
+  }
+
+  .CoreForm__submitButton {
+    width: 100%;
+  }
+}

@@ -1,0 +1,11 @@
+.Footer {
+  &__linksRow {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__socialRow {
+    display: flex;
+    justify-content: space-between;
+  }
+}

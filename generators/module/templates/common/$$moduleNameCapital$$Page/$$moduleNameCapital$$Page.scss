@@ -1,0 +1,10 @@
+.<%=moduleNameCapital%>Page {
+  .ui.cards {
+    margin: 0;
+    // justify-content: center;
+
+    & > .card, .ui.card {
+      width: 100%;
+    }
+  }
+}
