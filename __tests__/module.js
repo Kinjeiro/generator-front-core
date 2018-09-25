@@ -11,7 +11,7 @@ describe('generator-front-core:module', () => {
         console.warn('Test directory:', dir);
       })
       .withPrompts({
-        moduleName: 'test-cars',
+        moduleName: 'testCars',
         entityName: 'testCar'
       });
   });

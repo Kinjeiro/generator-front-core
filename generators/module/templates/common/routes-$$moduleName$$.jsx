@@ -7,17 +7,42 @@ import {
 } from 'react-router';
 import * as paths from './routes-paths-<%=moduleNameKebab%>';
 
-import <%=moduleNameCapital%>Page from './<%=moduleNameCapital%>Page/<%=moduleNameCapital%>Page';
-import <%=entityNameCapital%>Page from './<%=entityNameCapital%>Page/<%=entityNameCapital%>Page';
+import getComponents from './get-components';
 
-export default (
-  <Route path="">
-    <IndexRoute
-      component={ <%=moduleNameCapital%>Page }
-    />
+export default function getRoute() {
+  const {
+    <%=moduleNameCapital%>Layout,
+    <%=moduleNameCapital%>Page,
+    <%=entityNameCapital%>Page,
+    <%=entityNameCapital%>NewPage,
+  } = getComponents();
+
+  return (
     <Route
-      path={ `:${paths.PATH_PARAM_<%=entityNameUpper%>_ID}` }
-      component={ <%=entityNameCapital%>Page }
-    />
-  </Route>
-);
+      path=""
+      component={ <%=moduleNameCapital%>Layout }
+    >
+      <IndexRoute
+        component={ <%=moduleNameCapital%>Page }
+      />
+
+      <Route
+        path={ paths.ROUTES_NAMES.new }
+        component={ <%=entityNameCapital%>NewPage }
+      />
+
+      <Route
+        path={ `:${paths.PATH_PARAM_<%=entityNameUpper%>_ID}` }
+      >
+        <IndexRoute
+          component={ <%=entityNameCapital%>Page }
+        />
+        <Route
+          path={ paths.ROUTES_NAMES.edit }
+          component={ <%=entityNameCapital%>NewPage }
+        />
+      </Route>
+    </Route>
+  );
+}
+

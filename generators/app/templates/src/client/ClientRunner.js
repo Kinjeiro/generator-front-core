@@ -1,27 +1,20 @@
 /* eslint-disable global-require,no-param-reassign,max-len */
-import ParentClientRunner from '@reagentum/front-core/lib/client/CoreClientRunner';
-import SubModuleFactory from '@reagentum/front-core/lib/modules/SubModuleFactory';
-
-import { initComponents as fcComponentsInitComponents } from '@reagentum/frontCore_Components/lib/common/get-components';
+import ParentClientRunner from '@reagentum/frontCore_Components/lib/client/ClientRunner';
 
 import { initComponents } from '../common/get-components';
 import { initComponents as toCoreInitComponents } from '../module-to-front-core/common/get-components';
 
-// нужно статически обозначить контекст + необходим regexp без переменных
-const commonSubModulesContext = require.context('../modules', true, /^\.\/(.*)\/common\/index\.js/gi);
-
 export default class ClientRunner extends ParentClientRunner {
-  loadCommonSubModules() {
+  loadCommonSubModulesContexts() {
     return [
-      ...super.loadCommonSubModules(),
-      ...SubModuleFactory.loadSubModules(commonSubModulesContext),
+      ...super.loadCommonSubModulesContexts(),
+      require.context('../modules', true, /^\.\/(.*)\/common\/index\.js/gi),
     ];
   }
 
   initComponents(COMPONENTS_BASE) {
     super.initComponents(COMPONENTS_BASE);
     toCoreInitComponents(COMPONENTS_BASE);
-    fcComponentsInitComponents(COMPONENTS_BASE);
     return initComponents(COMPONENTS_BASE);
   }
 
@@ -31,14 +24,6 @@ export default class ClientRunner extends ParentClientRunner {
   }
   getIndexRoute() {
     return this.getComponents().Landing;
-  }
-
-  /**
-   * @override
-   */
-  hotReloadListeners() {
-    super.hotReloadListeners();
-    module.hot.accept('../common/get-components', this.reloadUi);
   }
 
   // /**

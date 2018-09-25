@@ -12,7 +12,7 @@ export default function getServerApi() {
             username,
           },
         } = request;
-        return reply(request.services.service<%=moduleNameCapital%>.load<%=moduleNameCapital%>(username, query));
+        return reply(request.services.service<%=moduleNameCapital%>.load<%=moduleNameCapital%>(query));
       },
     ),
 
@@ -23,12 +23,29 @@ export default function getServerApi() {
           params: {
             id,
           },
-          services: {
-            serviceUsers,
-          },
         } = request;
         const <%=entityName%> = await request.services.service<%=moduleNameCapital%>.load<%=entityNameCapital%>(id);
         return reply(<%=entityName%>);
+      },
+    ),
+
+    apiPluginFactory(
+      API_CONFIGS.create<%=entityNameCapital%>,
+      async (requestData, request, reply) => {
+        const { user } = request;
+        return reply(request.services.service<%=moduleNameCapital%>.create<%=entityNameCapital%>(requestData, user));
+      },
+    ),
+
+    apiPluginFactory(
+      API_CONFIGS.edit<%=entityNameCapital%>,
+      async (requestData, request, reply) => {
+        const {
+          params: {
+            id,
+          },
+        } = request;
+        return reply(request.services.service<%=moduleNameCapital%>.edit<%=entityNameCapital%>(id, requestData));
       },
     ),
   ];

@@ -9,14 +9,14 @@ const crud = createCrudApi(API_PREFIX, sendApi);
 
 export const API_CONFIGS = {
   load<%=moduleNameCapital%>: crud.API_CONFIGS.loadRecords,
-  // create<%=entityNameCapital%>: crud.API_CONFIGS.createRecord,
-  // load<%=entityNameCapital%>: crud.API_CONFIGS.readRecord,
-  // edit<%=entityNameCapital%>: crud.API_CONFIGS.updateRecord,
-  // delete<%=entityNameCapital%>: crud.API_CONFIGS.deleteRecord,
+  create<%=entityNameCapital%>: crud.API_CONFIGS.createRecord,
+  load<%=entityNameCapital%>: crud.API_CONFIGS.readRecord,
+  edit<%=entityNameCapital%>: crud.API_CONFIGS.updateRecord,
+  delete<%=entityNameCapital%>: crud.API_CONFIGS.deleteRecord,
 };
 
 export const apiLoad<%=moduleNameCapital%> = crud.apiLoadRecords;
-// export const apiCreate<%=entityNameCapital%> = crud.apiCreateRecord;
-// export const apiLoad<%=entityNameCapital%> = crud.apiReadRecord;
-// export const apiEdit<%=entityNameCapital%> = crud.apiUpdateRecord;
-// export const apiDelete<%=entityNameCapital%> = crud.apiDeleteRecord;
+export const apiCreate<%=entityNameCapital%> = crud.apiCreateRecord;
+export const apiLoad<%=entityNameCapital%> = crud.apiReadRecord;
+export const apiEdit<%=entityNameCapital%> = crud.apiUpdateRecord;
+export const apiDelete<%=entityNameCapital%> = crud.apiDeleteRecord;

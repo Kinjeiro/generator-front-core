@@ -1,0 +1,182 @@
+@import "../../../../../common/app-styles/vars";
+@import "../../../../../common/app-styles/mixins";
+
+.<%=entityNameCapital%>Page {
+  &__user {
+    font-weight: $font-weight-header;
+    margin-bottom: 0.5em;
+  }
+
+  &__main {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    @include respond-to('md') {
+      flex-direction: row;
+    }
+  }
+
+  &__photos {
+    &.Carousel__item {
+      text-align: left;
+    }
+    .image-gallery-slide-wrapper {
+      height: 100%;
+
+      .image-gallery-swipe {
+        padding-bottom: 30px;
+      }
+      .image-gallery-bullets {
+        bottom: 10px;
+      }
+    }
+    .image-gallery-bullets {
+      .image-gallery-bullet {
+        box-shadow: none;
+        background: $color-text-description;
+        border-color: $color-text-description;
+
+        &.active {
+          background: $color-primary;
+          border-color: $color-primary;
+        }
+      }
+    }
+    .image-gallery-thumbnails-wrapper {
+      display: none;
+    }
+
+    .image-gallery-left-nav,
+    .image-gallery-right-nav {
+      display: none;
+    }
+
+    @include respond-to('md') {
+      width: 600px;
+
+      .image-gallery-slide-wrapper {
+        height: 80%;
+
+        .image-gallery-swipe {
+          padding-bottom: 0;
+        }
+      }
+      .image-gallery-thumbnails-wrapper {
+        display: block;
+      }
+      .image-gallery-bullets {
+        display: none;
+      }
+      .image-gallery-left-nav,
+      .image-gallery-right-nav {
+        display: block;
+      }
+
+      &.Carousel--oneImage {
+        .image-gallery-slide-wrapper {
+          height: 100%;
+        }
+        .image-gallery-thumbnails-wrapper {
+          display: none;
+        }
+      }
+    }
+  }
+
+  &__params {
+    margin-top: 1em;
+
+    @include respond-to('md') {
+      margin-top: 0;
+    }
+  }
+
+  &__infoWrapper {
+    margin-left: 0;
+    max-width: 100%;
+
+    @include respond-to('md') {
+      margin-left: 1em;
+      max-width: 18rem; // ширина как в верху "Пожертвовать труд \ Войти \ Корзина" c margin
+    }
+  }
+  &__info {
+    height: 80%; // как высота карусели изображений без мини картинок
+    display: flex;
+    flex-direction: column;
+
+    @include respond-to('sm') {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    @include respond-to('md') {
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  }
+
+  &__actions {
+    .Button {
+      width: 100%;
+      margin-top: 1em;
+    }
+  }
+
+  &__reviews {
+    margin-top: 2em;
+  }
+
+  &__similar {
+    margin-top: 2em;
+  }
+
+  &__tag {
+    color: $color-default-text;
+    margin-right: 1em;
+    text-decoration: none;
+    border: 1px solid $color-default-text;
+    padding: 0.2em 0.4em;
+  }
+
+  LABEL {
+    font-weight: $font-weight-header;
+    margin-bottom: 1em;
+    display: block;
+  }
+
+  &--noImages {
+    .<%=entityNameCapital%>Page__info {
+      height: 100%;
+    }
+  }
+
+  &__toolbarEdit {
+    &.ui.button {
+      padding: 0.2em;
+    }
+  }
+}
+
+.<%=entityNameCapital%>PageParams {
+  &__price {
+    font-weight: $font-weight-header;
+    font-size: $font-weight-header;
+    margin-top: 2em;
+  }
+
+  &__amount {
+    margin-top: 1em;
+    color: $color-text-description,
+  }
+}
+
+.<%=entityNameCapital%>PageOtherParams {
+  &__description {
+    margin-top: 2em;
+  }
+  &__place {
+    margin-top: 2em;
+  }
+}

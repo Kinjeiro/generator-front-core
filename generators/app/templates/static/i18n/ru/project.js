@@ -4,10 +4,10 @@ module.exports = {
   },
   pages: {
     AppLayout: {
-      title: 'Проект',
+      title: '<%=projectTitle%>',
 
       Header: {
-        title: 'Проект',
+        title: '<%=projectTitle%>',
         description: null,
       },
     },

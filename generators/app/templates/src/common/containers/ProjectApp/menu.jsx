@@ -2,7 +2,8 @@ import React from 'react';
 
 import { MENU_ITEM_TYPE } from '@reagentum/frontCore_Components/lib/common/models/model-menu';
 import { getModuleFullPath } from '@reagentum/front-core/lib/common/helpers/app-urls';
-import moduleAuth from '@reagentum/front-core/lib/modules/module-auth/common/subMobule';
+
+import moduleAuth from '@reagentum/front-core/lib/modules/module-auth/common/subModule';
 
 // import moduleProfile from '../../../modules/module-profile/common';
 // import moduleTidings from '../../../modules/module-tidings/common';
@@ -34,7 +35,7 @@ export function getSidebarMenu(userInfo, moduleToRoutePrefixMap) {
     menu.push(
       {
         name: 'Войти',
-        path: moduleAuth.paths.PATH_LOGIN_PAGE,
+        path: moduleAuth.paths.PATH_AUTH_SIGNIN,
         // icon: 'browser',
         mobile: true,
       },

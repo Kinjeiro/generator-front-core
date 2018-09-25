@@ -3,26 +3,16 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import bind from 'lodash-decorators/bind';
 
-
 // import i18n from '../../utils/i18n';
 
-import {
-  PATH_PARAM_<%=entityNameUpper%>_ID,
-} from '../routes-paths-<%=moduleNameKebab%>';
-
-// import './<%=moduleNameCapital%>Page.scss';
+// import './Landing.scss';
 
 @connect(
-  (globalState, props) => {
-    const id = props.params[PATH_PARAM_<%=entityNameUpper%>_ID];
-    return {
-      id,
-    };
-  },
+  (globalState) => ({
+  }),
 )
-export default class <%=entityNameCapital%>Page extends PureComponent {
+export default class Landing extends PureComponent {
   static propTypes = {
-    id: PropTypes.number,
   };
 
   static defaultProps = {
@@ -52,12 +42,12 @@ export default class <%=entityNameCapital%>Page extends PureComponent {
   // ======================================================
   render() {
     const {
-      id,
+
     } = this.props;
 
     return (
-      <div className="<%=entityNameCapital%>Page">
-        <&=entityNameCapital&>Page -- {id}
+      <div className="Landing">
+        Landing
       </div>
     );
   }

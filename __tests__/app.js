@@ -13,6 +13,7 @@ describe('generator-front-core:app', () => {
       })
       .withPrompts({
         projectName: 'testProjectName',
+        projectTitle: 'testProjectTitle',
         privateNpmKey: 'testPrivateNpmKey'
       });
   });

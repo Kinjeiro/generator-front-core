@@ -5,7 +5,10 @@ const {
 } = require('config/lib/util');
 
 const { createEndpointServiceConfig } = require('@reagentum/front-core/config/utils/create-config');
-const { inNodeModules } = require('@reagentum/front-core/build-scripts/utils/path-utils');
+const {
+  inNodeModules,
+  getI18nModules
+} = require('@reagentum/front-core/build-scripts/utils/path-utils');
 
 const packageJson = require(path.join(process.cwd(), 'package.json'));
 const APP_ID = packageJson.name;
@@ -57,9 +60,11 @@ module.exports = extendDeep(
         i18n: {
           i18nextOptions: {
             //see \static\i18n\en\project.js
-            ns: ['core', 'frontCore-components', 'project'],
-            language: 'ru',
-            fallbackLng: 'ru'
+            ns: [
+              ...parentConfig.common.features.i18n.i18nextOptions.ns,
+              'project',
+              ...getI18nModules()
+            ],
           }
         },
         date: {

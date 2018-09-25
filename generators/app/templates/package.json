@@ -61,13 +61,10 @@
     }
   },
   "toCore": {
-    "history": "~3.3.0"
   },
   "dependencies": {
-    "@reagentum/front-core": "~1.5.1",
-    "@reagentum/frontCore_Components": "~1.5.15",
-    "rc-tree-select": "~2.0.13",
-    "react-image-gallery": "~0.8.10"
+    "@reagentum/front-core": "~1.5.4",
+    "@reagentum/frontCore_Components": "~1.5.18"
   },
   "// devDependencies copy from front-core": "",
   "devDependencies": {

@@ -23,7 +23,7 @@ const {
   // MediaQuery,
 
   Footer,
-  TabsLayout
+  TabsLayout,
 } = getComponents();
 
 // так как мы подгружаем модуль AppLayout onDemand то стили нужно подгрузить позже, а не при импорте

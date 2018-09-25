@@ -4,9 +4,13 @@ import * as reduxTables from '@reagentum/front-core/lib/common/app-redux/reducer
 
 import * as api from './api-<%=moduleNameKebab%>';
 
-export const actions = reduxTables.getBindActions({
+import redux<%=entityNameCapital%> from './redux-<%=entityNameKebab%>';
+
+export const tableActions = reduxTables.getBindActions({
   apiLoadRecords: api.apiLoad<%=moduleNameCapital%>,
 });
 
 // нету никаких редьюсеров
-export default {};
+export default {
+  <%=entityNameCamel%>: redux<%=entityNameCapital%>,
+};

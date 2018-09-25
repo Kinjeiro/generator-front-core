@@ -13,18 +13,28 @@ module.exports = class extends Generator {
       yosay('Welcome to the tiptop ' + chalk.red('generator-front-core') + ' generator!')
     );
 
+    console.warn('ANKU , this._globalConfig', this._globalConfig);
+
+    // https://github.com/SBoudrias/Inquirer.js/blob/master/README.md#question
     const answers = await this.prompt([
       {
         type: 'input',
         name: 'projectName',
-        message: 'Your project name',
-        default: this.appname // Default to current folder name
+        message: 'Your project id',
+        default: this.appname, // Default to current folder name
+        store: true
       },
       {
-        type: 'confirm',
-        name: 'cool',
-        message: 'Would you like to enable the Cool feature?'
+        type: 'input',
+        name: 'projectTitle',
+        message: 'Your project title',
+        default: ({ projectName }) => projectName
       },
+      // {
+      //   type: 'confirm',
+      //   name: 'cool',
+      //   message: 'Would you like to enable the Cool feature?'
+      // },
       {
         type: 'input',
         name: 'privateNpmKey',
@@ -83,7 +93,9 @@ module.exports = class extends Generator {
     // );
   }
 
-  install() {
-    this.installDependencies();
-  }
+
+  // todo @ANKU @CRIT @MAIN @DEBUG -
+  // install() {
+  //   this.installDependencies();
+  // }
 };
