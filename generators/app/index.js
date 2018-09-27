@@ -65,14 +65,14 @@ module.exports = class extends Generator {
         type: 'input',
         name: 'pathToCoreLib',
         message: 'Please write path to FrontCore lib folder',
-        validate: validateRequire,
+        // validate: validateRequire,
         when: ({ coreLibsType }) => coreLibsType === CORE_LIBS_TYPE[1]
       },
       {
         type: 'input',
         name: 'pathToCoreComponentsLib',
         message: 'Please write path to FrontCore Components lib folder',
-        validate: validateRequire,
+        // validate: validateRequire,
         when: ({ coreLibsType }) => coreLibsType === CORE_LIBS_TYPE[1]
       }
     ]);
