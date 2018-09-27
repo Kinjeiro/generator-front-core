@@ -9,7 +9,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-push": "npm version patch -m \"chore(*) patch version: %s\" && npm run publish"
+      "pre-push": "npm version patch -m \"chore(*) patch version: %s\" && npm publish"
     }
   },
   "dependencies": {
