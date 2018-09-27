@@ -30,6 +30,13 @@ yo front-core:module
 npm run start
 ```
 
+5. [Заходим на http://localhost:8080](http://localhost:8080)
+По умолчанию включены моки и для моков есть несколько тестовых пользователей:
+```
+ivanovI@@local.com \ 123456
+korolevaU@@local.com \ 123456
+```
+
 ## Getting To Know Yeoman
 
  * Yeoman has a heart of gold.
