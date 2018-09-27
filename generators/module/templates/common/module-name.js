@@ -1,1 +1,1 @@
-export default '<%=moduleName%>';
+export default '<%=moduleNameKebab%>';

@@ -125,20 +125,20 @@ export default class <%=entityNameCapital%>New extends PureComponent {
     return (
       <Segment
         className="<%=entityNameCapital%>New"
-        label={ i18n(`components.<%=entityNameCapital%>New.header`) }
+        label={ i18n('components.<%=entityNameCapital%>New.header') }
       >
         <Form
           id={ formId }
           i18nFieldPrefix={ `${NAMESPACE}:components.<%=entityNameCapital%>New.fields` }
 
           fields={ this.getFields() }
-          formData={{ ...form, type }}
+          formData={ form }
           onChangeField={ onUpdateForm }
 
           onSubmit={ onSubmit }
-          textActionSubmit={ i18n(`components.<%=entityNameCapital%>New.submitButton`) }
+          textActionSubmit={ i18n('components.<%=entityNameCapital%>New.submitButton') }
           onCancel={ onCancel }
-          textActionCancel={ i18n(`components.<%=entityNameCapital%>New.cancelButton`) }
+          textActionCancel={ i18n('components.<%=entityNameCapital%>New.cancelButton') }
 
           actionStatus={ actionCreate<%=entityNameCapital%>Status }
         />

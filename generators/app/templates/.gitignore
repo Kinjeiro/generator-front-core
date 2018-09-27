@@ -11,7 +11,6 @@ test/client/coverage/
 test/client/test-results.xml
 .babelrc
 npm-debug.log.*
+.DS_Store
 
 lib/
-
-.DS_Store

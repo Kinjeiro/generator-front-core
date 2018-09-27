@@ -69,7 +69,7 @@ export default class <%=entityNameCapital%>Card extends PureComponent {
       attachments,
     } = <%=entityNameCamel%>;
 
-    const imageFinal = attachments[0] || NO_IMAGE;
+    const imageFinal = attachments[0] ? attachments[0].downloadUrl || attachments[0] : NO_IMAGE;
 
     return (
       <Card className={ `<%=entityNameCapital%>Card ${className || ''}` }>

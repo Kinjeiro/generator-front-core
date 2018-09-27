@@ -2,6 +2,37 @@
   "name": "generator-front-core",
   "version": "1.0.0",
   "description": "",
+  "scripts": {
+    "prepublish": "nsp check",
+    "pretest": "eslint .",
+    "test": "jest"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "npm version patch -m \"chore(*) patch version: %s\" && npm run publish"
+    }
+  },
+  "dependencies": {
+    "chalk": "~2.1.0",
+    "gulp-rename": "~1.4.0",
+    "lodash": "~4.17.11",
+    "yeoman-generator": "~2.0.1",
+    "yosay": "~2.0.1"
+  },
+  "devDependencies": {
+    "eslint": "~4.1.0",
+    "eslint-config-prettier": "~2.4.0",
+    "eslint-config-xo": "~0.18.2",
+    "eslint-plugin-prettier": "~2.2.0",
+    "husky": "~1.0.1",
+    "jest": "~21.0.0",
+    "jest-cli": "~21.0.0",
+    "lint-staged": "~4.2.1",
+    "nsp": "~2.6.3",
+    "prettier": "~1.7.0",
+    "yeoman-assert": "~3.1.0",
+    "yeoman-test": "~1.7.0"
+  },
   "homepage": "",
   "author": {
     "name": "Andrey Kuzmin",
@@ -16,45 +47,8 @@
     "",
     "yeoman-generator"
   ],
-  "devDependencies": {
-    "yeoman-test": "^1.7.0",
-    "yeoman-assert": "^3.1.0",
-    "nsp": "^2.6.3",
-    "eslint": "^4.1.0",
-    "prettier": "^1.7.0",
-    "husky": "^0.14.3",
-    "lint-staged": "^4.2.1",
-    "eslint-config-prettier": "^2.4.0",
-    "eslint-plugin-prettier": "^2.2.0",
-    "eslint-config-xo": "^0.18.2",
-    "jest": "^21.0.0",
-    "jest-cli": "^21.0.0"
-  },
-  "dependencies": {
-    "chalk": "^2.1.0",
-    "gulp-rename": "~1.4.0",
-    "lodash": "~4.17.11",
-    "yeoman-generator": "^2.0.1",
-    "yosay": "^2.0.1"
-  },
   "jest": {
     "testEnvironment": "node"
-  },
-  "scripts": {
-    "prepublish": "nsp check",
-    "pretest": "eslint .",
-    "precommit": "lint-staged",
-    "test": "jest"
-  },
-  "lint-staged": {
-    "*.js": [
-      "eslint --fix",
-      "git add"
-    ],
-    "*.json": [
-      "prettier --write",
-      "git add"
-    ]
   },
   "eslintConfig": {
     "extends": [

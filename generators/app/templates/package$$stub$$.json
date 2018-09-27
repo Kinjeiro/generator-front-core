@@ -63,8 +63,13 @@
   "toCore": {
   },
   "dependencies": {
-    "@reagentum/front-core": "~1.5.4",
-    "@reagentum/frontCore_Components": "~1.5.18"
+<% if (privateNpmKey) { %>
+    "@reagentum/front-core": "~1.5.5",
+    "@reagentum/frontCore_Components": "~1.5.19"
+<% } else { %>
+    "@reagentum/front-core": "file:./coreLibs/front-core",
+    "@reagentum/frontCore_Components": "file:./coreLibs/frontCore_Components"
+<% } %>
   },
   "// devDependencies copy from front-core": "",
   "devDependencies": {

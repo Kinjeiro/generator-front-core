@@ -64,7 +64,7 @@ module.exports = extendDeep(
               ...parentConfig.common.features.i18n.i18nextOptions.ns,
               'project',
               ...getI18nModules()
-            ],
+            ]
           }
         },
         date: {

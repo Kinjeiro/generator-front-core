@@ -24,8 +24,8 @@ export default function getServerApi() {
             id,
           },
         } = request;
-        const <%=entityName%> = await request.services.service<%=moduleNameCapital%>.load<%=entityNameCapital%>(id);
-        return reply(<%=entityName%>);
+        const <%=entityNameCamel%> = await request.services.service<%=moduleNameCapital%>.load<%=entityNameCapital%>(id);
+        return reply(<%=entityNameCamel%>);
       },
     ),
 

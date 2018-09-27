@@ -1,18 +1,33 @@
 # generator-front-core [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
 > 
 
-## Installation
+## Подготовка
+1. Установить Node JS 9.0.0+
 
-First, install [Yeoman](http://yeoman.io) and generator-front-core using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
-
-```bash
-npm install -g yo generator-front-core
+## Генератор приложения
+1. Установить [Yeoman](http://yeoman.io) и наш генератор [generator-front-core](https://github.com/kinjeiro/generator-front-core)
 ```
+npm i -g yeoman generator-front-core
+```
+2. Создатей пустую папку с проектом и внутри нее запустить генерацию проекта
+```
+yo front-core    
+```
+Вам зададут ряд вопросов. Самый главный: как подключить корные библиотеки 
+- либо использовать ключ для private npm репозитория вида ```LtPoPitN+ORS2NczScMn2OYCk8U2t2uY/Pux2S0vCkl=```, который используется в ```.npmrc```:
+```
+registry=http://npm.reagentum.ru/
+//npm.reagentum.ru/:_authToken="LtPoPitN+ORS2NczScMn2OYCk8U2t2uY/Pux2S0vCkl="
+```
+- либо локально использовать скомпилированные версии библиотек. Их можно получить запустив внутри корных компонентов скрипт```npm run minimized``` и взяв из папки ```/minimizedPackage``` результат.
 
-Then generate your new project:
-
-```bash
-yo front-core
+3. Создание модуля
+```
+yo front-core:module
+```
+4. Запуск
+```
+npm run start
 ```
 
 ## Getting To Know Yeoman

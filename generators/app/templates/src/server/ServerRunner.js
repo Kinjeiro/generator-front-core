@@ -1,6 +1,5 @@
 import bind from 'lodash-decorators/bind';
 
-import ParentServerRunner from '@reagentum/front-core/lib/server/CoreServerRunner';
 import SubModuleFactory from '@reagentum/front-core/lib/modules/SubModuleFactory';
 
 import { joinPath } from '@reagentum/front-core/lib/common/utils/uri-utils';
@@ -9,16 +8,18 @@ import {
   // getModuleFullPath,
 } from '@reagentum/front-core/lib/common/helpers/app-urls';
 
-import ClientRunner from '../client/ClientRunner';
+import ParentServerRunner from '@reagentum/frontCore_components/lib/server/ServerRunner';
 
-// нужно статически обозначить контекст + необходим regexp без переменных
-const serverSubModulesContext = require.context('../modules', true, /^\.\/(.*)\/server\/index\.js/gi);
+import ClientRunner from '../client/ClientRunner';
 
 export default class ServerRunner extends ParentServerRunner {
   loadServerSubModules() {
     return [
       ...super.loadServerSubModules(),
-      ...SubModuleFactory.loadSubModules(serverSubModulesContext, SubModuleFactory.SUB_MODULE_TYPES.SERVER),
+      ...SubModuleFactory.loadSubModules(
+        require.context('../modules', true, /^\.\/(.*)\/server\/index\.js/gi),
+        SubModuleFactory.SUB_MODULE_TYPES.SERVER
+      ),
     ];
   }
 

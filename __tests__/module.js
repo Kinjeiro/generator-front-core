@@ -5,14 +5,16 @@ const helpers = require('yeoman-test');
 
 describe('generator-front-core:module', () => {
   beforeAll(() => {
+    jest.setTimeout(30000); // 30 second
+
     return helpers
       .run(path.join(__dirname, '../generators/module'))
       .inTmpDir(dir => {
         console.warn('Test directory:', dir);
       })
       .withPrompts({
-        moduleName: 'testCars',
-        entityName: 'testCar'
+        moduleName: 'cars',
+        entityName: 'car'
       });
   });
 

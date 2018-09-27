@@ -6,6 +6,12 @@ const rename = require('gulp-rename');
 const Generator = require('yeoman-generator');
 // Const Generator = require('../UniGenerator');
 
+function validateRequire(input) {
+  // // Declare function as asynchronous, and save the done callback
+  // var done = this.async();
+  return Boolean(input);
+}
+
 module.exports = class extends Generator {
   async prompting() {
     // Have Yeoman greet the user.
@@ -17,12 +23,14 @@ module.exports = class extends Generator {
       {
         type: 'input',
         name: 'moduleName',
-        message: 'Your module name'
+        message: 'Your module name (like as "Cars")',
+        validate: validateRequire
       },
       {
         type: 'input',
         name: 'entityName',
-        message: 'Your entity name'
+        message: 'Your entity name (like as "Car")',
+        validate: validateRequire
       }
     ]);
 
@@ -39,7 +47,7 @@ module.exports = class extends Generator {
       moduleNameCapital: `${capitalize(moduleName[0])}${camelCase(moduleName.substr(1))}`,
       moduleNameUpper: snakeCase(moduleName).toUpperCase(),
 
-      entityName: camelCase(entityName),
+      entityName: kebabCase(entityName),
       entityNameKebab: kebabCase(entityName),
       entityNameCamel: camelCase(entityName),
       entityNameCapital: `${capitalize(entityName[0])}${camelCase(entityName.substr(1))}`,

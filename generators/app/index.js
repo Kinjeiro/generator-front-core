@@ -6,14 +6,24 @@ const Generator = require('yeoman-generator');
 
 // Const Generator = require('../UniGenerator');
 
+const CORE_LIBS_TYPE = [
+  'Npm private repository (need access token)',
+  'OS links to front-core and frontCore_Components folders'
+  // New inquirer.Separator(),
+];
+
+function validateRequire(input) {
+  // // Declare function as asynchronous, and save the done callback
+  // var done = this.async();
+  return Boolean(input);
+}
+
 module.exports = class extends Generator {
   async prompting() {
     // Have Yeoman greet the user.
     this.log(
       yosay('Welcome to the tiptop ' + chalk.red('generator-front-core') + ' generator!')
     );
-
-    console.warn('ANKU , this._globalConfig', this._globalConfig);
 
     // https://github.com/SBoudrias/Inquirer.js/blob/master/README.md#question
     const answers = await this.prompt([
@@ -36,20 +46,46 @@ module.exports = class extends Generator {
       //   message: 'Would you like to enable the Cool feature?'
       // },
       {
+        type: 'list',
+        choices: CORE_LIBS_TYPE,
+        name: 'coreLibsType',
+        message: 'What type to get Front Core libs:'
+      },
+      {
         type: 'input',
         name: 'privateNpmKey',
-        message: 'Please write token for private npm'
+        message: 'Please write token for private npm',
+        validate: validateRequire,
+        when: ({ coreLibsType }) => {
+          console.warn('ANKU , coreLibsType', coreLibsType);
+          return coreLibsType === CORE_LIBS_TYPE[0];
+        }
+      },
+      {
+        type: 'input',
+        name: 'pathToCoreLib',
+        message: 'Please write path to FrontCore lib folder',
+        validate: validateRequire,
+        when: ({ coreLibsType }) => coreLibsType === CORE_LIBS_TYPE[1]
+      },
+      {
+        type: 'input',
+        name: 'pathToCoreComponentsLib',
+        message: 'Please write path to FrontCore Components lib folder',
+        validate: validateRequire,
+        when: ({ coreLibsType }) => coreLibsType === CORE_LIBS_TYPE[1]
       }
     ]);
 
     this.answers = answers;
     this.props = {
+      stub: '',
+      privateNpmKey: null,
+      pathToCoreLib: null,
+      pathToCoreComponentsLib: null,
       ...this.props,
       ...this.answers
     };
-
-    this.log('app name', answers.name);
-    this.log('cool feature', answers.cool);
   }
 
   writing() {
@@ -57,6 +93,8 @@ module.exports = class extends Generator {
     //   this.templatePath('dummyfile.txt'),
     //   this.destinationPath('dummyfile.txt')
     // );
+
+    const { pathToCoreLib, pathToCoreComponentsLib } = this.props;
 
     this.registerTransformStream(
       rename(path => {
@@ -91,11 +129,18 @@ module.exports = class extends Generator {
     //   this.destinationPath('public/index.html'),
     //   { title: this.answers.title } // user answer `title` used
     // );
+    if (pathToCoreLib) {
+      this.fs.copy(pathToCoreLib, this.destinationPath('./coreLibs/front-core'));
+    }
+    if (pathToCoreComponentsLib) {
+      this.fs.copy(
+        pathToCoreComponentsLib,
+        this.destinationPath('./coreLibs/frontCore_components')
+      );
+    }
   }
 
-
-  // todo @ANKU @CRIT @MAIN @DEBUG -
-  // install() {
-  //   this.installDependencies();
-  // }
+  install() {
+    this.installDependencies();
+  }
 };
