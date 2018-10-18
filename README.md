@@ -7,7 +7,7 @@
 ## Генератор приложения
 1. Установить [Yeoman](http://yeoman.io) и наш генератор [generator-front-core](https://github.com/kinjeiro/generator-front-core)
 ```
-npm i -g yeoman generator-front-core
+npm i -g yo generator-front-core
 ```
 2. Создатей пустую папку с проектом и внутри нее запустить генерацию проекта
 ```
