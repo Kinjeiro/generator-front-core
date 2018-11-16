@@ -17,8 +17,8 @@ export default function getRoute() {
   return (
     <Route
       path=""
-      component={ <%=moduleNameCapital%>Page }
     >
+      <IndexRoute component={ <%=moduleNameCapital%>Page } />
     </Route>
   );
 }
