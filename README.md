@@ -1,6 +1,11 @@
 # generator-front-core [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
 > 
 
+## Описание
+Генератор для создания частей приложения ```front-core@1.6.4```
+  - стркутуры приложения ```yo front-core```
+  - модулей (простого и entities с CRUD)```yo front-core:module```
+
 ## Подготовка
 1. Установить Node JS 9.0.0+
 
@@ -36,13 +41,6 @@ npm run start
 ivanovI@local.com \ 123456
 korolevaU@local.com \ 123456
 ```
-
-## Getting To Know Yeoman
-
- * Yeoman has a heart of gold.
- * Yeoman is a person with feelings and opinions, but is very easy to work with.
- * Yeoman can be too opinionated at times but is easily convinced not to be.
- * Feel free to [learn more about Yeoman](http://yeoman.io/).
 
 ## License
 

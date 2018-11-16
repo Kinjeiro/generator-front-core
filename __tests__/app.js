@@ -3,6 +3,8 @@ const path = require('path');
 const assert = require('yeoman-assert');
 const helpers = require('yeoman-test');
 
+const CORE_VERSIONS = require('../generators/core-versions');
+
 describe('generator-front-core:app', () => {
   beforeAll(() => {
     jest.setTimeout(30000); // 30 second
@@ -14,15 +16,16 @@ describe('generator-front-core:app', () => {
         console.warn('Test directory:', dir);
       })
       .withPrompts({
+        coreVersion: CORE_VERSIONS[0],
         projectName: 'testProjectName',
         projectTitle: 'testProjectTitle',
         // CoreLibsType: 0,
         // privateNpmKey: 'testPrivateNpmKey'
         coreLibsType: 1,
         pathToCoreLib:
-          'H:\\__CODER__\\_W_Reagentum_\\__Gasprom__\\Project_Rascenka\\formRascenka_FrontCore\\minimizedPackage\\front-core',
+          'h:\\__CODER__\\_W_Reagentum_\\_FRONT_CORE_\\front-core\\minimizedPackage\\front-core',
         pathToCoreComponentsLib:
-          'H:\\__CODER__\\_W_Reagentum_\\_FRONT_CORE_\\FrontCore_Components\\minimizedPackage\\frontCore_Components'
+          'h:\\__CODER__\\_W_Reagentum_\\_FRONT_CORE_\\frontCore_Components\\minimizedPackage\\frontCore_Components'
       });
   });
 

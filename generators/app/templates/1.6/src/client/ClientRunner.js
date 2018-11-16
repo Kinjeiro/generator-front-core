@@ -33,7 +33,7 @@ export default class ClientRunner extends ParentClientRunner {
   //   /**
   //    * Специальный хедар для прокси (OAM) перед weblogic для аутентификации пользователя
   //    *
-  //    * мы ее кладем в userInfo.username
+  //    * мы ее кладем в userInfo.userId
   //    * @type {string}
   //    */
   //   const HEADER_SAUID = 'SAUID';
@@ -41,11 +41,11 @@ export default class ClientRunner extends ParentClientRunner {
   //   const SuperClass = super.getApiClientClass();
   //   class NewClass extends SuperClass {
   //     parseOptions(requestOptions) {
-  //       const { username } = this.getUserInfo();
+  //       const { userId } = this.getUserInfo();
   //       if (!requestOptions.headers) {
   //         requestOptions.headers = {};
   //       }
-  //       requestOptions.headers[HEADER_SAUID] = username;
+  //       requestOptions.headers[HEADER_SAUID] = userId;
   //       return requestOptions;
   //     }
   //   }

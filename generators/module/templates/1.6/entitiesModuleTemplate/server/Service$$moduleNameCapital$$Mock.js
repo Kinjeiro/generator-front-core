@@ -26,7 +26,7 @@ export default class Service<%=moduleNameCapital%>Mock extends CoreServiceMock {
 
   async create<%=entityNameCapital%>(data, user) {
     const {
-      username,
+      userId,
       displayName,
     } = user;
 

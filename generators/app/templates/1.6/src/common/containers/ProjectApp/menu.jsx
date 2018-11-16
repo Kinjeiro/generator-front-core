@@ -24,7 +24,7 @@ export function getTabsMenu(moduleToRoutePrefixMap) {
 }
 
 export function getUserProfileUrl(user, moduleToRoutePrefixMap) {
-  // return getModuleFullPath(moduleProfile.paths.getPathProfile(user.username), moduleProfile.MODULE_NAME, moduleToRoutePrefixMap);
+  // return getModuleFullPath(moduleProfile.paths.getPathProfile(user.userId), moduleProfile.MODULE_NAME, moduleToRoutePrefixMap);
   return null;
 }
 
@@ -63,8 +63,8 @@ export function getUserMenu(userInfo, moduleToRoutePrefixMap) {
   }
 
   const {
-    username,
-    displayName,
+    userId,
+    computedDisplayName,
   } = userInfo;
 
   return [
@@ -72,10 +72,10 @@ export function getUserMenu(userInfo, moduleToRoutePrefixMap) {
     //   className: 'UserMenuItem',
     //   name: (
     //     <div className="UserMenuItem__userInfo">
-    //       <UserAvatar username={ username } />
+    //       <UserAvatar userId={ userId } />
     //       <div className="UserMenuItem__right">
     //         <div className="UserMenuItem__displayName">
-    //           { displayName }
+    //           { computedDisplayName }
     //         </div>
     //         <div>
     //           Мой профиль

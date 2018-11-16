@@ -3,6 +3,11 @@ const path = require('path');
 const assert = require('yeoman-assert');
 const helpers = require('yeoman-test');
 
+const {
+  CORE_VERSIONS,
+  MODULE_TYPES
+} = require('../generators/module/index');
+
 describe('generator-front-core:module', () => {
   beforeAll(() => {
     jest.setTimeout(30000); // 30 second
@@ -13,8 +18,12 @@ describe('generator-front-core:module', () => {
         console.warn('Test directory:', dir);
       })
       .withPrompts({
-        moduleName: 'cars',
-        entityName: 'car'
+        coreVersion: CORE_VERSIONS[0],
+        // moduleType: MODULE_TYPES[1],
+        // moduleName: 'cars',
+        // entityName: 'car'
+        moduleType: MODULE_TYPES[0],
+        moduleName: 'Settings'
       });
   });
 

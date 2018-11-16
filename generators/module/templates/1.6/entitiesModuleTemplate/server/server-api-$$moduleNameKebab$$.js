@@ -9,7 +9,7 @@ export default function getServerApi() {
       async (query, request, reply) => {
         const {
           user: {
-            username,
+            userId,
           },
         } = request;
         return reply(request.services.service<%=moduleNameCapital%>.load<%=moduleNameCapital%>(query));

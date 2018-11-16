@@ -11,7 +11,7 @@ import {
 import { objectValues } from '@reagentum/front-core/lib/common/utils/common';
 // import onPropsUpdate from '@reagentum/front-core/lib/common/utils/decorators/react-methods/on-props-update';
 import reduxTableDecorator from '@reagentum/front-core/lib/common/utils/decorators/react-class/redux-table';
-import { getUser } from '@reagentum/front-core/lib/common/app-redux/selectors';
+import { getUserId } from '@reagentum/front-core/lib/common/app-redux/selectors';
 import contextModules from '@reagentum/front-core/lib/common/contexts/ContextModules/decorator-context-modules';
 
 // import i18n from '../../i18n';
@@ -40,12 +40,9 @@ const DEFAULT_META = {
 
 @contextModules()
 @connect(
-  (globalState, props) => {
-    const user = getUser(globalState);
-    return {
-      userId: user && user.username,
-    };
-  },
+  (globalState, props) => ({
+    userId: getUserId(globalState),
+  }),
 )
 @reduxTableDecorator(
   '<%=entityNameUpper%>S',

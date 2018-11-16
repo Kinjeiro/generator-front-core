@@ -4,6 +4,8 @@ const yosay = require('yosay');
 const rename = require('gulp-rename');
 const Generator = require('yeoman-generator');
 
+const CORE_VERSIONS = require('../core-versions');
+
 // Const Generator = require('../UniGenerator');
 
 const CORE_LIBS_TYPE = [
@@ -28,16 +30,23 @@ module.exports = class extends Generator {
     // https://github.com/SBoudrias/Inquirer.js/blob/master/README.md#question
     const answers = await this.prompt([
       {
+        type: 'list',
+        name: 'coreVersion',
+        message: 'What core version do you use:',
+        choices: CORE_VERSIONS,
+        default: CORE_VERSIONS[0]
+      },
+      {
         type: 'input',
         name: 'projectName',
-        message: 'Your project id',
+        message: 'Your project id:',
         default: this.appname, // Default to current folder name
         store: true
       },
       {
         type: 'input',
         name: 'projectTitle',
-        message: 'Your project title',
+        message: 'Your project title:',
         default: ({ projectName }) => projectName
       },
       // {
@@ -54,7 +63,7 @@ module.exports = class extends Generator {
       {
         type: 'input',
         name: 'privateNpmKey',
-        message: 'Please write token for private npm',
+        message: 'Please write token for private npm:',
         validate: validateRequire,
         when: ({ coreLibsType }) => {
           console.warn('ANKU , coreLibsType', coreLibsType);
@@ -64,14 +73,14 @@ module.exports = class extends Generator {
       {
         type: 'input',
         name: 'pathToCoreLib',
-        message: 'Please write path to FrontCore lib folder',
+        message: 'Please write path to FrontCore lib folder:',
         // validate: validateRequire,
         when: ({ coreLibsType }) => coreLibsType === CORE_LIBS_TYPE[1]
       },
       {
         type: 'input',
         name: 'pathToCoreComponentsLib',
-        message: 'Please write path to FrontCore Components lib folder',
+        message: 'Please write path to FrontCore Components lib folder:',
         // validate: validateRequire,
         when: ({ coreLibsType }) => coreLibsType === CORE_LIBS_TYPE[1]
       }
@@ -94,7 +103,11 @@ module.exports = class extends Generator {
     //   this.destinationPath('dummyfile.txt')
     // );
 
-    const { pathToCoreLib, pathToCoreComponentsLib } = this.props;
+    const {
+      coreVersion,
+      pathToCoreLib,
+      pathToCoreComponentsLib
+    } = this.props;
 
     this.registerTransformStream(
       rename(path => {
@@ -106,10 +119,18 @@ module.exports = class extends Generator {
       })
     );
     console.warn('Props for templates:\n', JSON.stringify(this.props, null, 2));
+
+
     // This.fs.copyTpl(this.templatePath('**/*'), this.destinationPath('.'), this.props);
-    this.fs.copyTpl(this.templatePath(), this.destinationPath(), this.props, undefined, {
-      globOptions: { dot: true }
-    });
+    this.fs.copyTpl(
+      this.templatePath(coreVersion),
+      this.destinationPath(),
+      this.props,
+      undefined,
+      {
+        globOptions: { dot: true }
+      }
+    );
 
     // Const pkgJson = {
     //   devDependencies: {

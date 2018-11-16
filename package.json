@@ -12,9 +12,12 @@
       "pre-push": "npm version patch -m \"chore(*) patch version: %s\" && npm publish"
     }
   },
+  "commentDependecies": {
+    "gulp-rename": "~1.4.0 - https://github.com/yeoman/yo/issues/577#issuecomment-392325341 - Error [ERR_STREAM_WRITE_AFTER_END]: write after end"
+  },
   "dependencies": {
     "chalk": "~2.1.0",
-    "gulp-rename": "~1.4.0",
+    "gulp-rename": "1.2.2",
     "lodash": "~4.17.11",
     "yeoman-generator": "~2.0.1",
     "yosay": "~2.0.1"

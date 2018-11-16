@@ -1,9 +1,9 @@
 const path = require('path');
+
 const {
   extendDeep,
   loadFileConfigs
-} = require('config/lib/util');
-
+} = require('@reagentum/front-core/config/utils/config-utils');
 const { createEndpointServiceConfig } = require('@reagentum/front-core/config/utils/create-config');
 const {
   inNodeModules,
