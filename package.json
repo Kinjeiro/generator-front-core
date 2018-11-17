@@ -1,12 +1,12 @@
 {
   "name": "generator-front-core",
-  "version": "1.0.18",
+  "version": "1.0.19",
   "description": "",
   "scripts": {
     "prepublish": "nsp check",
     "pretest": "eslint .",
     "test": "jest",
-    "postversion": "git push --follow-tags && npm publish"
+    "postversion": "git push --follow-tags --no-verify && npm publish"
   },
   "husky": {
     "hooks": {
