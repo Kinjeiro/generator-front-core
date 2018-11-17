@@ -6,12 +6,12 @@
     "prepublish": "nsp check",
     "pretest": "eslint .",
     "test": "jest",
-    "--postversion": "git push --follow-tags --no-verify && npm publish",
-    "post-receive": "git push --follow-tags --no-verify && npm publish"
+    "--postversion": "git push --follow-tags --no-verify && npm publish"
   },
   "husky": {
     "hooks": {
-      "pre-push": "npm version patch -m \"chore(*) patch version: %s\""
+      "pre-push": "npm version patch -m \"chore(*) patch version: %s\"",
+      "post-update": "git push --follow-tags --no-verify && npm publish"
     }
   },
   "commentDependecies": {
