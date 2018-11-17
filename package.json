@@ -5,11 +5,18 @@
   "scripts": {
     "prepublish": "nsp check",
     "pretest": "eslint .",
-    "test": "jest"
+    "test": "jest",
+    "----- VERSION -----": "----------",
+    "publish-patch-r": "git push --follow-tags && npm publish",
+    "release-patch": "npm version patch -m \"chore(*) patch version: %s\"",
+    "release-minor": "npm version minor -m \"chore(*) minor version: %s\"",
+    "release-major": "npm version major -m \"chore(*) major version: %s\"",
+    "--postversion": "git push --follow-tags --no-verify && npm publish",
+    "postversion": "npm publish"
   },
   "husky": {
     "hooks": {
-      "pre-push": "npm version patch -m \"chore(*) patch version: %s\" && npm publish"
+      "pre-push": "npm run release-patch"
     }
   },
   "commentDependecies": {
