@@ -3,10 +3,11 @@
   "version": "1.1.0",
   "description": "",
   "scripts": {
-    "prepublish": "nsp check",
     "pretest": "eslint .",
     "test": "jest",
+
     "----- VERSION -----": "----------",
+    "--prepublish": "nsp check",
     "publish-patch-r": "git push --follow-tags && npm publish",
     "release-patch": "npm version patch -m \"chore(*) patch version: %s\"",
     "release-minor": "npm version minor -m \"chore(*) minor version: %s\"",
