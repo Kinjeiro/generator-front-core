@@ -7,7 +7,7 @@
     "pretest": "eslint .",
     "test": "jest",
     "--postversion": "git push --follow-tags --no-verify && npm publish",
-    "postversion": "npm publish"
+    "post-receive": "git push --follow-tags --no-verify && npm publish"
   },
   "husky": {
     "hooks": {
