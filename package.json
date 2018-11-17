@@ -1,6 +1,6 @@
 {
   "name": "generator-front-core",
-  "version": "1.0.38",
+  "version": "1.0.39",
   "description": "",
   "scripts": {
     "prepublish": "nsp check",
