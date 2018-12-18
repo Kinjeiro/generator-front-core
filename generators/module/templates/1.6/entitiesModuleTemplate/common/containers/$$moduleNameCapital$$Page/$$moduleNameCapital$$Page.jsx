@@ -13,6 +13,8 @@ import { objectValues } from '@reagentum/front-core/lib/common/utils/common';
 import reduxTableDecorator from '@reagentum/front-core/lib/common/utils/decorators/react-class/redux-table';
 import { getUserId } from '@reagentum/front-core/lib/common/app-redux/selectors';
 import contextModules from '@reagentum/front-core/lib/common/contexts/ContextModules/decorator-context-modules';
+import titled from '@reagentum/front-core/lib/common/utils/decorators/react-class/titled';
+import loading from '@reagentum/front-core/lib/common/utils/decorators/react-class/loading';
 
 // import i18n from '../../i18n';
 
@@ -51,6 +53,8 @@ const DEFAULT_META = {
     tableActions,
   },
 )
+@titled('<%=moduleNameCapital%>Page', '<%=moduleNameCapital%> page')
+@loading('actionLoadRecordsStatus')
 export default class <%=moduleNameCapital%>Page extends Component {
   static propTypes = {
     // ======================================================

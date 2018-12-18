@@ -5,6 +5,7 @@ import bind from 'lodash-decorators/bind';
 
 import { getUserId } from '@reagentum/front-core/lib/common/app-redux/selectors';
 import contextModules from '@reagentum/front-core/lib/common/contexts/ContextModules/decorator-context-modules';
+import titled from '@reagentum/front-core/lib/common/utils/decorators/react-class/titled';
 
 // import i18n from '../../i18n';
 
@@ -27,6 +28,7 @@ require('./<%=moduleNameCapital%>Page.scss');
     userId: getUserId(globalState),
   }),
 )
+@titled('<%=moduleNameCapital%>Page', '<%=moduleNameCapital%> page')
 export default class <%=moduleNameCapital%>Page extends Component {
   static propTypes = {
     // ======================================================

@@ -8,7 +8,7 @@ export function initComponents(COMPONENTS_BASE) {
   // ======================================================
   // CONTAINERS
   // ======================================================
-  COMPONENTS_BASE.replace('<%=moduleNameCapital%>Page', () => require('./containers/<%=moduleNameCapital%>Page/<%=moduleNameCapital%>Page').default);
+  COMPONENTS_BASE.replace('<%=moduleNameCapital%>Page', () => require('./pages/<%=moduleNameCapital%>Page/<%=moduleNameCapital%>Page').default);
 
   CB = COMPONENTS_BASE;
   return COMPONENTS_BASE;

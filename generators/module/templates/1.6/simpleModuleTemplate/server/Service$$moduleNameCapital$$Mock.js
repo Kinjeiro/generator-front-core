@@ -11,8 +11,4 @@ export default class Service<%=moduleNameCapital%>Mock extends CoreServiceMock {
   async getData() {
     return <%=moduleNameUpper%>;
   }
-
-  async load<%=moduleNameCapital%>() {
-    return this.loadRecords();
-  }
 }

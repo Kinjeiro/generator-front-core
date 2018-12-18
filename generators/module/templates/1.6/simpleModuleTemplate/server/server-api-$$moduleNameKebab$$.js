@@ -6,7 +6,7 @@ export default function getServerApi() {
   return [
     apiPluginFactory(
       API_CONFIGS.load<%=moduleNameCapital%>,
-      async (query, request, reply) => {
+      async (requestData, request, reply) => {
         const {
           user: {
             userId,
@@ -15,7 +15,7 @@ export default function getServerApi() {
             service<%=moduleNameCapital%>,
           },
         } = request;
-        return reply(service<%=moduleNameCapital%>.load<%=moduleNameCapital%>());
+        return reply(service<%=moduleNameCapital%>.findRecordsWithPagination(requestData));
       },
     ),
   ];

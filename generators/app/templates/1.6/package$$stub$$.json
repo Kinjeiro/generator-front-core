@@ -64,8 +64,8 @@
   },
   "dependencies": {
 <% if (privateNpmKey) { %>
-    "@reagentum/front-core": "~1.6.6",
-    "@reagentum/frontCore_Components": "~1.6.4"
+    "@reagentum/front-core": "~1.6.37",
+    "@reagentum/frontCore_Components": "~1.6.14"
 <% } else { %>
     "@reagentum/front-core": "file:./coreLibs/front-core",
     "@reagentum/frontCore_Components": "file:./coreLibs/frontCore_Components"
@@ -98,8 +98,6 @@
     "eslint-plugin-promise": "~3.5.0",
     "eslint-plugin-react": "~7.1.0",
     "eslint-plugin-standard": "~3.0.1",
-    "git-hooks": "1.0.2",
-    "githooks": "~1.1.1",
     "glob": "~7.1.2",
     "husky": "~1.0.0-rc.13",
     "ignore-styles": "~5.0.1",

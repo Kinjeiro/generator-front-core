@@ -6,13 +6,16 @@ export default function getServerApi() {
   return [
     apiPluginFactory(
       API_CONFIGS.load<%=moduleNameCapital%>,
-      async (query, request, reply) => {
+      async (requestData, request, reply) => {
         const {
           user: {
             userId,
           },
+          services: {
+            service<%=moduleNameCapital%>,
+          },
         } = request;
-        return reply(request.services.service<%=moduleNameCapital%>.load<%=moduleNameCapital%>(query));
+        return reply(service<%=moduleNameCapital%>.findRecordsWithPagination(requestData));
       },
     ),
 
@@ -23,17 +26,24 @@ export default function getServerApi() {
           params: {
             id,
           },
+          services: {
+            service<%=moduleNameCapital%>,
+          },
         } = request;
-        const <%=entityNameCamel%> = await request.services.service<%=moduleNameCapital%>.load<%=entityNameCapital%>(id);
-        return reply(<%=entityNameCamel%>);
+        return reply(service<%=moduleNameCapital%>.readRecord(id));
       },
     ),
 
     apiPluginFactory(
       API_CONFIGS.create<%=entityNameCapital%>,
       async (requestData, request, reply) => {
-        const { user } = request;
-        return reply(request.services.service<%=moduleNameCapital%>.create<%=entityNameCapital%>(requestData, user));
+        const {
+          user,
+          services: {
+            service<%=moduleNameCapital%>,
+          },
+        } = request;
+        return reply(service<%=moduleNameCapital%>.createRecord(requestData));
       },
     ),
 
@@ -44,8 +54,11 @@ export default function getServerApi() {
           params: {
             id,
           },
+          services: {
+            service<%=moduleNameCapital%>,
+          },
         } = request;
-        return reply(request.services.service<%=moduleNameCapital%>.edit<%=entityNameCapital%>(id, requestData));
+        return reply(service<%=moduleNameCapital%>.updateRecord(id, requestData));
       },
     ),
   ];

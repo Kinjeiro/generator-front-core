@@ -3,7 +3,7 @@ const path = require('path');
 const assert = require('yeoman-assert');
 const helpers = require('yeoman-test');
 
-const CORE_VERSIONS = require('../generators/core-versions');
+const { LAST_VERSION } = require('../core-versions');
 
 describe('generator-front-core:app', () => {
   beforeAll(() => {
@@ -16,7 +16,7 @@ describe('generator-front-core:app', () => {
         console.warn('Test directory:', dir);
       })
       .withPrompts({
-        coreVersion: CORE_VERSIONS[0],
+        coreVersion: LAST_VERSION,
         projectName: 'testProjectName',
         projectTitle: 'testProjectTitle',
         // CoreLibsType: 0,

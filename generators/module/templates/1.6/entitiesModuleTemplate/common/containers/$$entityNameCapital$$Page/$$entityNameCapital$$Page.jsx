@@ -4,6 +4,9 @@ import { connect } from 'react-redux';
 // import bind from 'lodash-decorators/bind';
 
 import contextModules from '@reagentum/front-core/lib/common/contexts/ContextModules/decorator-context-modules';
+import titled from '@reagentum/front-core/lib/common/utils/decorators/react-class/titled';
+import loading from '@reagentum/front-core/lib/common/utils/decorators/react-class/loading';
+import ACTION_STATUS_PROP_TYPE from '@reagentum/front-core/lib/common/models/model-action-status';
 
 import MODULE_NAME from '../../module-name';
 import { actions } from '../../redux-<%=entityNameKebab%>';
@@ -43,6 +46,8 @@ require('./<%=entityNameCapital%>Page.scss');
     ...actions,
   },
 )
+@titled('<%=entityNameCapital%>Page', '<%=entityNameCapital%> page')
+@loading('actionLoad<%=entityNameCapital%>Status')
 export default class <%=entityNameCapital%>Page extends PureComponent {
   static propTypes = {
     // ======================================================
@@ -57,7 +62,7 @@ export default class <%=entityNameCapital%>Page extends PureComponent {
     // @connect
     // ======================================================
     <%=entityNameCamel%>: <%=entityNameUpper%>_PROP_TYPE,
-    actionLoad<%=entityNameCapital%>Status: PropTypes.object,
+    actionLoad<%=entityNameCapital%>Status: ACTION_STATUS_PROP_TYPE,
     actionLoad<%=entityNameCapital%>: PropTypes.func,
     // ======================================================
     // @contextModules

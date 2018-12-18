@@ -2,17 +2,17 @@
 const chalk = require('chalk');
 const yosay = require('yosay');
 const { camelCase, capitalize, kebabCase, snakeCase } = require('lodash');
-const rename = require('gulp-rename');
 const Generator = require('yeoman-generator');
 // Const Generator = require('../UniGenerator');
 
-const CORE_VERSIONS = require('../core-versions');
-
-function validateRequire(input) {
-  // // Declare function as asynchronous, and save the done callback
-  // var done = this.async();
-  return Boolean(input);
-}
+const {
+  validateRequire,
+  commonWriting
+} = require('../utils');
+const {
+  CORE_VERSIONS,
+  LAST_VERSION,
+} = require('../core-versions');
 
 const MODULE_TYPES = [
   'Simple module',
@@ -32,7 +32,7 @@ class ModuleGenerator extends Generator {
         name: 'coreVersion',
         message: 'What core version do you use:',
         choices: CORE_VERSIONS,
-        default: CORE_VERSIONS[0]
+        default: LAST_VERSION
       },
       {
         type: 'list',
@@ -90,39 +90,16 @@ class ModuleGenerator extends Generator {
   }
 
   writing() {
-    // This.fs.copy(
-    //   this.templatePath('dummyfile.txt'),
-    //   this.destinationPath('dummyfile.txt')
-    // );
-
-    this.registerTransformStream(
-      rename(path => {
-        for (let prop in this.props) {
-          let regexp = new RegExp('\\$\\$' + prop + '\\$\\$', 'g');
-          path.basename = path.basename.replace(regexp, this.props[prop]);
-          path.dirname = path.dirname.replace(regexp, this.props[prop]);
-        }
-      })
-    );
-    console.warn('Props for templates:\n', JSON.stringify(this.props, null, 2));
     const {
       moduleType,
-      coreVersion,
     } = this.props;
 
-    this.fs.copyTpl(
-      this.templatePath(
-        coreVersion,
-        moduleType === MODULE_TYPES[0]
-          ? 'simpleModuleTemplate'
-          : 'entitiesModuleTemplate'
-      ),
-      this.destinationPath(`./src/modules/module-${this.props.moduleNameKebab}`),
-      this.props,
-      undefined,
-      {
-        globOptions: { dot: true }
-      }
+    commonWriting(
+      this,
+      moduleType === MODULE_TYPES[0]
+        ? 'simpleModuleTemplate'
+        : 'entitiesModuleTemplate',
+      `./src/modules/module-${this.props.moduleNameKebab}`
     );
   }
 }

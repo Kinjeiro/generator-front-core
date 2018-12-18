@@ -5,6 +5,8 @@ import { push, goBack } from 'react-router-redux';
 import bind from 'lodash-decorators/bind';
 
 import contextModules from '@reagentum/front-core/lib/common/contexts/ContextModules/decorator-context-modules';
+import titled from '@reagentum/front-core/lib/common/utils/decorators/react-class/titled';
+import ACTION_STATUS_PROP_TYPE from '@reagentum/front-core/lib/common/models/model-action-status';
 
 // import i18n from '../../i18n';
 import getComponents from '../../get-components';
@@ -41,6 +43,7 @@ require('./<%=entityNameCapital%>NewPage.scss');
     actionGoBack: goBack,
   },
 )
+@titled('<%=entityNameCapital%>NewPage', 'New <%=entityNameCapital%>')
 export default class <%=entityNameCapital%>NewPage extends Component {
   static propTypes = {
     // ======================================================
@@ -57,11 +60,11 @@ export default class <%=entityNameCapital%>NewPage extends Component {
     <%=entityNameCamel%>: PropTypes.object,
 
     actionCreate<%=entityNameCapital%>: PropTypes.func,
-    actionCreate<%=entityNameCapital%>Status: PropTypes.object,
+    actionCreate<%=entityNameCapital%>Status: ACTION_STATUS_PROP_TYPE,
     actionEdit<%=entityNameCapital%>: PropTypes.func,
-    actionEdit<%=entityNameCapital%>Status: PropTypes.object,
+    actionEdit<%=entityNameCapital%>Status: ACTION_STATUS_PROP_TYPE,
     actionLoad<%=entityNameCapital%>: PropTypes.func,
-    actionLoad<%=entityNameCapital%>Status: PropTypes.object,
+    actionLoad<%=entityNameCapital%>Status: ACTION_STATUS_PROP_TYPE,
     actionClear<%=entityNameCapital%>: PropTypes.func,
     actionGoTo: PropTypes.func,
     actionGoBack: PropTypes.func,

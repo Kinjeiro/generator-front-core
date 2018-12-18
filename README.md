@@ -5,6 +5,7 @@
 Генератор для создания частей приложения ```front-core@1.6.4```
   - стркутуры приложения ```yo front-core```
   - модулей (простого и entities с CRUD)```yo front-core:module```
+  - continues integration (CI) для gitlab проектов ```yo front-core:ci```
 
 ## Подготовка
 1. Установить Node JS 9.0.0+
