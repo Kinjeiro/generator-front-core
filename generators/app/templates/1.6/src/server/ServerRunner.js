@@ -8,7 +8,7 @@ import {
   // getModuleFullPath,
 } from '@reagentum/front-core/lib/common/helpers/app-urls';
 
-import ParentServerRunner from '@reagentum/frontCore_components/lib/server/ServerRunner';
+import ParentServerRunner from '@reagentum/frontCore_Components/lib/server/ServerRunner';
 
 import ClientRunner from '../client/ClientRunner';
 
