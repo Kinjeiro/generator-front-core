@@ -5,7 +5,8 @@ const helpers = require('yeoman-test');
 
 const {
   CORE_VERSIONS,
-  MODULE_TYPES
+  MODULE_TYPES,
+  MODULE_TYPES_MAP
 } = require('../generators/module/index');
 
 describe('generator-front-core:module', () => {
@@ -22,7 +23,8 @@ describe('generator-front-core:module', () => {
         // moduleType: MODULE_TYPES[1],
         // moduleName: 'cars',
         // entityName: 'car'
-        moduleType: MODULE_TYPES[0],
+        // moduleType: MODULE_TYPES_MAP.SIMPLE_MODULE,
+        moduleType: MODULE_TYPES_MAP.SIMPLE_FEATURE,
         moduleName: 'Settings'
       });
   });

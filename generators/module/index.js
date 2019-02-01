@@ -76,6 +76,7 @@ class ModuleGenerator extends Generator {
 
     this.answers = answers;
     this.props = {
+      stub: '',
       ...this.props,
       ...this.answers,
 
@@ -117,5 +118,6 @@ class ModuleGenerator extends Generator {
 
 ModuleGenerator.CORE_VERSIONS = CORE_VERSIONS;
 ModuleGenerator.MODULE_TYPES = MODULE_TYPES;
+ModuleGenerator.MODULE_TYPES_MAP = MODULE_TYPES_MAP;
 
 module.exports = ModuleGenerator;
