@@ -1,3 +1,3 @@
-#Модуль <%=moduleNameCapital%>
+#Модуль <%=prefix%> <%=moduleNameCapital%>
 
 

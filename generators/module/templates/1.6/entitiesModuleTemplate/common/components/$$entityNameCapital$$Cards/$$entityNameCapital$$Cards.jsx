@@ -28,7 +28,7 @@ export default class <%=entityNameCapital%>Cards extends PureComponent {
   static propTypes = {
     table: TABLE_PROP_TYPE,
     tableId: PropTypes.string,
-    actionLoadRecords: PropTypes.func,
+    onUpdateTableMeta: PropTypes.func,
 
     getFullPath: PropTypes.func,
 
@@ -43,10 +43,9 @@ export default class <%=entityNameCapital%>Cards extends PureComponent {
   @bind()
   handlePaginationChanged(event, { activePage }) {
     const {
-      tableId,
-      actionLoadRecords,
+      onUpdateTableMeta,
     } = this.props;
-    return actionLoadRecords(tableId, { startPage: activePage - 1 });
+    return onUpdateTableMeta({ startPage: activePage - 1 });
   }
 
   // ======================================================

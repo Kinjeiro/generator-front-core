@@ -9,14 +9,22 @@ const {
   validateRequire,
   commonWriting
 } = require('../utils');
+
 const {
   CORE_VERSIONS,
   LAST_VERSION,
 } = require('../core-versions');
 
+const MODULE_TYPES_MAP = {
+  SIMPLE_MODULE: 'Simple module',
+  SIMPLE_FEATURE: 'Simple feature',
+  ENTITIES_MODULE: 'Entities module (with crud)'
+};
+
 const MODULE_TYPES = [
-  'Simple module',
-  'Entities module (with crud)'
+  MODULE_TYPES_MAP.SIMPLE_MODULE,
+  MODULE_TYPES_MAP.SIMPLE_FEATURE,
+  MODULE_TYPES_MAP.ENTITIES_MODULE
 ];
 
 class ModuleGenerator extends Generator {
@@ -45,9 +53,9 @@ class ModuleGenerator extends Generator {
         type: 'input',
         name: 'moduleName',
         message: ({ moduleType }) => (
-          moduleType === MODULE_TYPES[0]
-          ? 'Your module name:'
-          : 'Your entities name (multiple, like as "Cars"):'
+          moduleType === MODULE_TYPES_MAP.ENTITIES_MODULE
+          ? 'Your entities name (multiple, like as "Cars"):'
+          : 'Your module name:'
         ),
         validate: validateRequire
       },
@@ -55,7 +63,7 @@ class ModuleGenerator extends Generator {
         type: 'input',
         name: 'entityName',
         message: 'Your entity name (like as "Car"):',
-        when: ({ moduleType }) => moduleType === MODULE_TYPES[1],
+        when: ({ moduleType }) => moduleType === MODULE_TYPES_MAP.ENTITIES_MODULE,
         validate: validateRequire
       }
     ]);
@@ -71,6 +79,8 @@ class ModuleGenerator extends Generator {
       ...this.props,
       ...this.answers,
 
+      prefix: moduleType === MODULE_TYPES_MAP.SIMPLE_FEATURE ? 'feature' : 'module',
+
       moduleName: kebabCase(moduleName),
       moduleNameKebab: kebabCase(moduleName),
       moduleNameCamel: camelCase(moduleName),
@@ -78,7 +88,7 @@ class ModuleGenerator extends Generator {
       moduleNameUpper: snakeCase(moduleName).toUpperCase()
     };
 
-    if (moduleType === MODULE_TYPES[1]) {
+    if (moduleType === MODULE_TYPES_MAP.ENTITIES_MODULE) {
       Object.assign(this.props, {
         entityName: kebabCase(entityName),
         entityNameKebab: kebabCase(entityName),
@@ -96,9 +106,9 @@ class ModuleGenerator extends Generator {
 
     commonWriting(
       this,
-      moduleType === MODULE_TYPES[0]
-        ? 'simpleModuleTemplate'
-        : 'entitiesModuleTemplate',
+      moduleType === MODULE_TYPES_MAP.ENTITIES_MODULE
+        ? 'entitiesModuleTemplate'
+        : 'simpleModuleTemplate',
       `./src/modules/module-${this.props.moduleNameKebab}`
     );
   }
