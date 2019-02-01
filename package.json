@@ -8,15 +8,15 @@
     "----- VERSION -----": "----------",
     "--prepublish": "nsp check",
     "publish-patch-r": "git push --follow-tags && npm publish",
-    "release-patch": "echo '333_1' && npm version patch -m \"chore(*) patch version: %s\" && echo '333_2'",
+    "release-patch": "npm version patch -m \"chore(*) patch version: %s\"",
     "release-minor": "npm version minor -m \"chore(*) minor version: %s\"",
     "release-major": "npm version major -m \"chore(*) major version: %s\"",
     "--postversion": "git push --follow-tags --no-verify && npm publish",
-    "postversion": "echo '444_1' && npm publish && echo '444_2'"
+    "postversion": "npm publish"
   },
   "husky": {
     "hooks": {
-      "pre-push": "echo '222_1' && npm run release-patch && echo '222_2' && git push --no-verify && echo '222_3' "
+      "pre-push": "npm run release-patch && git push --no-verify"
     }
   },
   "commentDependecies": {
