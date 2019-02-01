@@ -24,7 +24,7 @@ describe('generator-front-core:module', () => {
         // moduleName: 'cars',
         // entityName: 'car'
         // moduleType: MODULE_TYPES_MAP.SIMPLE_MODULE,
-        moduleType: MODULE_TYPES_MAP.SIMPLE_FEATURE,
+        moduleType: MODULE_TYPES_MAP.SIMPLE_UI_FEATURE,
         moduleName: 'Settings'
       });
   });

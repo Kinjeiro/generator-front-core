@@ -1,0 +1,5 @@
+{
+  "name": "<%=prefix%>-<%=moduleNameKebab%>",
+  "version": "1.0.0",
+  "dependencies": {}
+}

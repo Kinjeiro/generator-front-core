@@ -17,12 +17,14 @@ const {
 
 const MODULE_TYPES_MAP = {
   SIMPLE_MODULE: 'Simple module',
+  SIMPLE_UI_FEATURE: 'Simple ui feature',
   SIMPLE_FEATURE: 'Simple feature',
   ENTITIES_MODULE: 'Entities module (with crud)'
 };
 
 const MODULE_TYPES = [
   MODULE_TYPES_MAP.SIMPLE_MODULE,
+  MODULE_TYPES_MAP.SIMPLE_UI_FEATURE,
   MODULE_TYPES_MAP.SIMPLE_FEATURE,
   MODULE_TYPES_MAP.ENTITIES_MODULE
 ];
@@ -80,7 +82,9 @@ class ModuleGenerator extends Generator {
       ...this.props,
       ...this.answers,
 
-      prefix: moduleType === MODULE_TYPES_MAP.SIMPLE_FEATURE ? 'feature' : 'module',
+      prefix: moduleType === MODULE_TYPES_MAP.SIMPLE_FEATURE || moduleType === MODULE_TYPES_MAP.SIMPLE_UI_FEATURE
+        ? 'feature'
+        : 'module',
 
       moduleName: kebabCase(moduleName),
       moduleNameKebab: kebabCase(moduleName),
@@ -106,13 +110,21 @@ class ModuleGenerator extends Generator {
       moduleType,
     } = this.props;
 
-    commonWriting(
-      this,
-      moduleType === MODULE_TYPES_MAP.ENTITIES_MODULE
-        ? 'entitiesModuleTemplate'
-        : 'simpleModuleTemplate',
-      `./src/modules/${prefix}-${this.props.moduleNameKebab}`
-    );
+    if (moduleType === MODULE_TYPES_MAP.SIMPLE_UI_FEATURE) {
+      commonWriting(
+        this,
+        'simpleModuleTemplateUi',
+        `./src/modules/${prefix}-${this.props.moduleNameKebab}`
+      );
+    } else {
+      commonWriting(
+        this,
+        moduleType === MODULE_TYPES_MAP.ENTITIES_MODULE
+          ? 'entitiesModuleTemplate'
+          : 'simpleModuleTemplateExt',
+        `./src/modules/${prefix}-${this.props.moduleNameKebab}`
+      );
+    }
   }
 }
 
