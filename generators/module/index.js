@@ -101,6 +101,7 @@ class ModuleGenerator extends Generator {
 
   writing() {
     const {
+      prefix,
       moduleType,
     } = this.props;
 
@@ -109,7 +110,7 @@ class ModuleGenerator extends Generator {
       moduleType === MODULE_TYPES_MAP.ENTITIES_MODULE
         ? 'entitiesModuleTemplate'
         : 'simpleModuleTemplate',
-      `./src/modules/module-${this.props.moduleNameKebab}`
+      `./src/modules/${prefix}-${this.props.moduleNameKebab}`
     );
   }
 }
