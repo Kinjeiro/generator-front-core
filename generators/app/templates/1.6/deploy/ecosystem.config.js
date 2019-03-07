@@ -1,5 +1,5 @@
 /* eslint-disable comma-dangle,no-multi-str,max-len */
-const packageJson = require('./package.json');
+const packageJson = require('../package.json');
 const { getLogPaths } = require('./ecosystem-utils');
 
 const appName = packageJson.name;

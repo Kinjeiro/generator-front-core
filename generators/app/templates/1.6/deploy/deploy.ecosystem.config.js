@@ -1,19 +1,17 @@
 /* eslint-disable comma-dangle,no-multi-str,max-len */
 const path = require('path');
-const packageJson = require('./package.json');
+const packageJson = require('../package.json');
 const {
   DEFAULT_USER,
   getLogPaths,
   getAppPath,
-} = require('../../../app/templates/1.6/ecosystem-utils');
+} = require('./ecosystem-utils');
 
 const appName = packageJson.name;
 const appVersion = packageJson.version;
 
 // Target server hostname or IP address
-const DEV_HOST = process.env.DEV_HOST
-  ? process.env.DEV_HOST.trim()
-  : 'dev.reagentum.ru';
+const DEV_HOST = process.env.DEV_HOST.trim();
 const DEV_USER = process.env.DEV_USER
   ? process.env.DEV_USER.trim()
   : DEFAULT_USER;
@@ -24,9 +22,7 @@ const DEV_APP_PATH = process.env.DEV_APP_PATH
 
 
 // Target server hostname or IP address
-const PROD_HOST = process.env.PROD_HOST
-  ? process.env.PROD_HOST.trim()
-  : 'dev.reagentum.ru';
+const PROD_HOST = process.env.PROD_HOST.trim();
 const PROD_USER = process.env.PROD_USER
   ? process.env.PROD_USER.trim()
   : DEFAULT_USER;
@@ -50,12 +46,14 @@ console.log(`
     
     "----- BUILD -----": "----------",
     "build:inner": "node ./node_modules/@reagentum/front-core/build-scripts/update-babelrc.js && node ./node_modules/@reagentum/front-core/build-scripts/build.js",
-    "build:inner-env": "cross-env SERVER_PORT=3001 npm run build:inner",
+    "build:inner-env": "npm run build:inner",
     "build:production": "cross-env NODE_ENV=production npm run build:inner-env",
     "build:development": "cross-env NODE_ENV=development npm run build:inner-env",
+    "build": "npm run build:production",
     "----- START DAEMON -----": "----------",
-    "start:daemon:development": "pm2 restart ecosystem.config.js --env development --update-env",
-    "start:daemon:production": "pm2 restart ecosystem.config.js --env production --update-env",
+    "start:daemon:development": "pm2 restart ./deploy/ecosystem.config.js --env development --update-env && pm2 save",
+    "start:daemon:production": "pm2 restart ./deploy/ecosystem.config.js --env production --update-env && pm2 save",
+    "start:daemon": "npm run start:daemon:production",
   `);
 
 function deployOptions(isProduction = false) {
@@ -63,7 +61,7 @@ function deployOptions(isProduction = false) {
   /*
     @NOTE: у pm2 структура папок app: current \ source
   */
-  const APP_PATH_SOURCE = path.join(APP_PATH, 'source');
+  // const APP_PATH_SOURCE = path.join(APP_PATH, 'source');
 
   let START_NODE_ENV_OBJECT = isProduction ? process.env.PROD_START_NODE_ENV_JSON : process.env.DEV_START_NODE_ENV_JSON;
   if (START_NODE_ENV_OBJECT) {
@@ -84,7 +82,7 @@ function deployOptions(isProduction = false) {
     : '';
   console.log('START_NODE_ENV_STR: ', START_NODE_ENV_STR);
 
-  const { log } = getLogPaths(APP_PATH_SOURCE);
+  const { log } = getLogPaths();
 
   return {
     // мы кладем ключ в DEPLOY KEYS в gitlab CI

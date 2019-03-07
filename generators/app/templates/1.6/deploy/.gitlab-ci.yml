@@ -74,6 +74,7 @@ stages:
 # важно поменить точкой впереди, чтобы gitlab yamp не воспринимал его как блок
 .deploy_ssh_key: &deploy_ssh_key
   before_script:
+    - TARGET_HOST_FINAL="${TARGET_HOST:-dev.reagentum.ru}"
     - TARGET_USER_FINAL="${TARGET_USER:-root}"
 
     # символ ":" является оператором в yaml и чтобы его заэкранировать нужно писать множественные строки через |-
@@ -83,7 +84,7 @@ stages:
       echo "==============================="
       echo "REPO: $REPO"
       echo "DEPLOY_ENV: $DEPLOY_ENV"
-      echo "TARGET_HOST: $TARGET_HOST"
+      echo "TARGET_HOST: $TARGET_HOST_FINAL"
       echo "TARGET_USER: $TARGET_USER"
       echo "TARGET_USER_FINAL: $TARGET_USER_FINAL"
       echo "TARGET_PRIVATE_SSH_KEY: true"
@@ -127,7 +128,8 @@ stages:
     ## with your own domain name. You can copy and repeat that command if you have
     ## more than one server to connect to.
     ##
-    - ssh-keyscan $TARGET_HOST >> ~/.ssh/known_hosts
+    - touch ~/.ssh/known_hosts
+    - ssh-keyscan $TARGET_HOST_FINAL >> ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
 
     ##
@@ -163,8 +165,8 @@ stages:
     - ssh -T git@gitlab.com
 
     # try test ssh connection
-    - echo "Test ssh connection" $TARGET_USER_FINAL $TARGET_HOST
-    - ssh -o StrictHostKeyChecking=no -T "$TARGET_USER_FINAL@$TARGET_HOST"
+    - echo "Test ssh connection" $TARGET_USER_FINAL $TARGET_HOST_FINAL
+    - ssh -o StrictHostKeyChecking=no -T "$TARGET_USER_FINAL@$TARGET_HOST_FINAL"
 
 #    - echo "Token $CI_JOB_TOKEN"
 #    - git config --global url."https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.com:reagentum/reafront/auth-server-oauth2.git".insteadOf git@gitlab.com:reagentum/reafront/auth-server-oauth2.git
@@ -186,36 +188,36 @@ stages:
     # выход из этой ситуации чтобы setup отрападывал без ошибок, поэтому добавили чтобы перед сетапом pm2 всегда очищал папку
     # pm2 ecosystem.config.js: 'pre-setup': `rm -rf ${APP_PATH}`,
     - echo "Setup tagget server directories"
-    - pm2 deploy deploy.ecosystem.config.js $DEPLOY_ENV setup 2>&1 || true
+    - pm2 deploy ./deploy/deploy.ecosystem.config.js $DEPLOY_ENV setup 2>&1 || true
 
     - echo "make deploy"
-    - pm2 deploy deploy.ecosystem.config.js $DEPLOY_ENV --force
+    - pm2 deploy ./deploy/deploy.ecosystem.config.js $DEPLOY_ENV --force
 
-# у нас бага с ассетами из-за context-path - пока не актуально
-##// ======================================================
-##// DEV
-##// ======================================================
-## запускаем при любом изменение мастера
-#deploy_dev:
-#  stage: deploy
-#  environment:
-#    name: development
-#  only:
-#    - master
-#  variables:
-#    DEPLOY_ENV: "development"
-##    REPO: $CI_PROJECT_URL
-#    REPO: $CI_REPOSITORY_URL
-#    TARGET_HOST: $DEV_HOST
-#    TARGET_PRIVATE_SSH_KEY: $DEV_PRIVATE_SSH_KEY
-##    // todo @ANKU @LOW @BUG_OUT @gitlab - они даже не прикрутили еще дефолтные значения https://gitlab.com/gitlab-org/gitlab-runner/issues/1867
-##    TARGET_USER: ${DEV_USER:-root}
-#    TARGET_USER: $DEV_USER
-#    TARGET_APP_PATH: $DEV_APP_PATH
-#    TARGET_START_NODE_ENV_JSON: $DEV_START_NODE_ENV_JSON
-#
-#  <<: *deploy_ssh_key
-#  <<: *deploy_by_pm2
+
+#// ======================================================
+#// DEV
+#// ======================================================
+# запускаем при любом изменение мастера
+deploy_dev:
+  stage: deploy
+  environment:
+    name: development
+  only:
+    - master
+  variables:
+    DEPLOY_ENV: "development"
+#    REPO: $CI_PROJECT_URL
+    REPO: $CI_REPOSITORY_URL
+    TARGET_HOST: $DEV_HOST
+    TARGET_PRIVATE_SSH_KEY: $DEV_PRIVATE_SSH_KEY
+#    // todo @ANKU @LOW @BUG_OUT @gitlab - они даже не прикрутили еще дефолтные значения https://gitlab.com/gitlab-org/gitlab-runner/issues/1867
+#    TARGET_USER: ${DEV_USER:-root}
+    TARGET_USER: $DEV_USER
+    TARGET_APP_PATH: $DEV_APP_PATH
+    TARGET_START_NODE_ENV_JSON: $DEV_START_NODE_ENV_JSON
+
+  <<: *deploy_ssh_key
+  <<: *deploy_by_pm2
 
 
 #// ======================================================
@@ -226,8 +228,7 @@ deploy_prod:
   stage: deploy
   environment:
     name: production
-#  // todo @ANKU @CRIT @MAIN @debugger - пока не прод пусть автоматом льет
-#  when: manual # запускаем вручную
+  when: manual # запускаем вручную
   only:
     - master
   variables:

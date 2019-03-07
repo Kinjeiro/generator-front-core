@@ -1,7 +1,6 @@
 import SubModuleFactory from '@reagentum/front-core/lib/modules/SubModuleFactory';
 
 import MODULE_NAME from './module-name';
-// import { initComponents } from './get-components';
 
 export default SubModuleFactory.createCommonSubModule({
   MODULE_NAME,
