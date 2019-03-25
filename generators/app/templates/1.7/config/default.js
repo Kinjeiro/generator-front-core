@@ -10,8 +10,26 @@ const {
   getI18nModules
 } = require('@reagentum/front-core/build-scripts/utils/path-utils');
 
+const { parseObjectFromNodeEnv } = require('./utils/node-env-object');
+
+/* eslint-disable import/no-dynamic-require */
+/* eslint-disable no-undef */
 const packageJson = require(path.join(process.cwd(), 'package.json'));
 const APP_ID = packageJson.name;
+/* eslint-enable import/no-dynamic-require */
+/* eslint-enable no-undef */
+
+const {
+  // MONGO_URI,
+  // TEST_MONGO_URI,
+  // MONGO_USER,
+  // MONGO_PASSWORD,
+  // DROP_ON_START = false,
+  CUSTOM_CONFIG
+  // eslint-disable-next-line no-undef
+} = process.env;
+
+const customConfig = parseObjectFromNodeEnv(CUSTOM_CONFIG);
 
 /* eslint-disable */
 //const { createEndpointFactoryFromEnv } = require('@reagentum/front-core/config/create-config');
@@ -54,11 +72,20 @@ module.exports = extendDeep(
     // ОБЩИЕ КОНФИГИ для КЛИЕНТА И СЕРВЕРА
     // ======================================================
     common: {
+      preLoader: {
+        autoClose: 500
+      },
       features: {
         auth: {
           allowSignup: true,
           allowResetPasswordByEmail: true,
-          emailAsLogin: true
+          emailAsLogin: true,
+
+          // socialProvides: {
+          //   google: true,
+          //   vkontakte: true,
+          //   facebook: true
+          // },
         },
         i18n: {
           i18nextOptions: {
@@ -67,7 +94,7 @@ module.exports = extendDeep(
               ...parentConfig.common.features.i18n.i18nextOptions.ns,
               'project',
               ...getI18nModules()
-            ]
+            ],
           }
         },
         date: {
@@ -125,8 +152,34 @@ module.exports = extendDeep(
           protectorUser: {
             // todo @ANKU @CRIT @MAIN - убрать и указывать лишь при старте
             password: `${APP_ID}${APP_ID}`
-          }
-        }
+          },
+        },
+
+        attachments: {
+          // так как у нас аттачи товаров все доступны для всех по умолчанию
+          /**
+           * accessPublic - все у кого есть ссылка
+           * accessAuth - (default) только авторизованные пользователи
+           * accessOwnerOnly - только тот, кто создал (ну и админ ;))
+           * <permission> - пермишен специальный
+           */
+          defaultAccess: 'accessPublic'
+        },
+
+        // // ======================================================
+        // // DB Mongo
+        // // ======================================================
+        // db: {
+        //   mongoose: {
+        //     uri: MONGO_URI || 'mongodb://localhost:27017/yapomosh',
+        //     testUri: TEST_MONGO_URI || 'mongodb://localhost:27017/yapomoshTest',
+        //     auth: {
+        //       user: MONGO_USER || 'yapomoshUser',
+        //       password: MONGO_PASSWORD
+        //     }
+        //   },
+        //   dropOnStart: DROP_ON_START
+        // },
       },
 
       endpointServices: {
@@ -144,6 +197,7 @@ module.exports = extendDeep(
         // })
       }
     }
-  }
+  },
+  customConfig
 );
 

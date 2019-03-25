@@ -9,6 +9,8 @@ const {
   getProcessAppName,
 } = require('./ecosystem-utils');
 
+const { serializeObjectToNodeEnv } = require('../config/utils/node-env-object');
+
 const appName = packageJson.name;
 const appVersion = packageJson.version;
 
@@ -41,12 +43,17 @@ console.log(`
   "----- BUILD -----": "----------",
   "build:inner": "node ./node_modules/@reagentum/front-core/build-scripts/update-babelrc.js && node ./node_modules/@reagentum/front-core/build-scripts/build.js",
   "build:inner-env": "npm run build:inner",
-  "build:production": "cross-env NODE_ENV=production npm run build:inner-env",
   "build:development": "cross-env NODE_ENV=development npm run build:inner-env",
+  "build:integration": "cross-env NODE_ENV=integration npm run build:inner-env",
+  "build:production": "cross-env NODE_ENV=production npm run build:inner-env",
+  "build": "cross-env npm run build:production",
+  "test:build": "npm run build && npm run start:production",
+
   "----- START DAEMON -----": "----------",
   "start:daemon:development": "pm2 restart ./deploy/ecosystem.config.js --env development --update-env && pm2 save",
   "start:daemon:production": "pm2 restart ./deploy/ecosystem.config.js --env production --update-env && pm2 save",
   "start:daemon": "npm run start:daemon:production",
+  "logs": "pm2 logs <%=projectName%> --lines 300",
 `);
 
 function deployOptions(isProduction = false) {
@@ -78,7 +85,9 @@ function deployOptions(isProduction = false) {
     ? Object.keys(startNodeEnvObject).reduce(
       (result, envKey) => {
         let value = startNodeEnvObject[envKey];
-        if (typeof value !== 'number') {
+        if (typeof value === 'object') {
+          value = serializeObjectToNodeEnv(value);
+        } else if (typeof value !== 'number') {
           value = `'${value}'`;
         }
         return `${result} '${envKey}'=${value}`;
@@ -158,8 +167,8 @@ function deployOptions(isProduction = false) {
       && ${startNodeEnvStr} npm run ${isProduction ? 'build:production' : 'build:development'}\
       && ${startNodeEnvStr} npm run ${isProduction ? 'start:daemon:production' : 'start:daemon:development'}\
       && pm2 save\
-      && echo 'wait 30 sec and show logs...'\
-      && sleep 30\
+      && echo 'wait 60 sec and show logs...'\
+      && sleep 60\
       && tail -n 500 ${log} || true\
     `,
   };
