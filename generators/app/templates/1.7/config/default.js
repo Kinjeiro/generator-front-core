@@ -27,10 +27,13 @@ const APP_ID = packageJson.name;
 // } = process.env;
 
 const serviceAuth = createEndpointServiceConfig({
-  host: 'dev.reagentum.ru',
-  // port: 1337,
-  // endpoint: 'api'
-  endpoint: 'auth-server/api'
+  protocol: 'https',
+  port: 1338,
+  endpoint: 'api',
+  requestOptions: {
+    // игнорировать, что сертификат не подписан
+    rejectUnauthorized: false
+  }
 });
 
 const middlewareApiService = createEndpointServiceConfig({

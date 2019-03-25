@@ -1,11 +1,14 @@
 /* eslint-disable comma-dangle,no-multi-str,max-len */
-const packageJson = require('../package.json');
-const { getLogPaths } = require('./ecosystem-utils');
+const {
+  getLogPaths,
+  getProcessAppName
+} = require('./ecosystem-utils');
 
-const appName = packageJson.name;
-// const appVersion = packageJson.version;
+const {
+  START_SCRIPT = './.build/server.js',
+} = process.env;
 
-const START_SCRIPT = process.env.START_SCRIPT || './.build/server.js';
+const logs = getLogPaths();
 
 module.exports = {
   /**
@@ -14,10 +17,10 @@ module.exports = {
    */
   apps: [
     {
-      name: appName,
+      name: getProcessAppName(),
       script: START_SCRIPT,
 
-      ...getLogPaths(),
+      ...logs,
 
       env_development: {
         NODE_ENV: 'development',
