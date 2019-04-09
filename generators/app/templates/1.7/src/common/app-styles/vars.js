@@ -15,15 +15,15 @@ module.exports = Object.assign(
     // 'font-size-base': '13px',
     // // 'icon-url': '"~antd-iconfont/iconfont"'
 
-    'primary-color': '#7AC74F',
-    'color-primary': '#7AC74F',
-    'color-primary-text': '#fff',
-
-    'color-error-text': '#EF3E36',
-    'color-error-background': 'transparent',
-    'color-error-border': '#EF3E36',
-
-    'color-border': '#98989A',
-    'color-border-hover': '#000',
+    // 'primary-color': '#7AC74F',
+    // 'color-primary': '#7AC74F',
+    // 'color-primary-text': '#fff',
+    //
+    // 'color-error-text': '#EF3E36',
+    // 'color-error-background': 'transparent',
+    // 'color-error-border': '#EF3E36',
+    //
+    // 'color-border': '#98989A',
+    // 'color-border-hover': '#000',
   },
 );
