@@ -137,6 +137,7 @@ module.exports = class extends Generator {
   }
 
   install() {
-    this.installDependencies();
+    // вручную npm i сделать потом
+    // this.installDependencies();
   }
 };
