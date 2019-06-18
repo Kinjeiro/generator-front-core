@@ -72,8 +72,8 @@
   },
   "dependencies": {
 <% if (privateNpmKey) { %>
-    "@reagentum/front-core": "~1.7.5",
-    "@reagentum/frontCore_Components": "~1.7.2",
+    "@reagentum/front-core": "~1.7.9",
+    "@reagentum/frontCore_Components": "~1.7.5",
 <% } else { %>
     "@reagentum/front-core": "file:./coreLibs/front-core",
     "@reagentum/frontCore_Components": "file:./coreLibs/frontCore_Components",
