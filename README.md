@@ -26,6 +26,13 @@ registry=http://npm.reagentum.ru/
 //npm.reagentum.ru/:_authToken="LtPoPitN+ORS2NczScMn2OYCk8U2t2uY/Pux2S0vCkl="
 ```
 - либо локально использовать скомпилированные версии библиотек. Их можно получить запустив внутри корных компонентов скрипт```npm run minimized``` и взяв из папки ```/minimizedPackage``` результат.
+Потом в package.json само запишется
+```
+  "dependencies": {
+    "@reagentum/front-core": "file:./coreLibs/front-core",
+    "@reagentum/frontCore_Components": "file:./coreLibs/frontCore_Components",
+  },
+```
 
 3. Создание модуля
 ```
