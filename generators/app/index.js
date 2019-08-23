@@ -4,7 +4,7 @@ const yosay = require('yosay');
 const path = require('path');
 const Generator = require('yeoman-generator');
 
-const packageJson = require(path.join(process.cwd(), 'package.json'));
+const packageJson = require(path.resolve(__dirname, '../../package.json'));
 const APP_ID = packageJson.name;
 const APP_VERSION = packageJson.version;
 
@@ -29,7 +29,7 @@ module.exports = class extends Generator {
   async prompting() {
     // Have Yeoman greet the user.
     this.log(
-      yosay('Welcome to the tiptop ' + chalk.red('generator-front-core' + '@' + APP_VERSION) + ' generator!')
+      yosay('Welcome to the\n' + chalk.red('generator-front-core' + '\n v ' + APP_VERSION) + ' generator!')
     );
 
     // https://github.com/SBoudrias/Inquirer.js/blob/master/README.md#question
@@ -45,8 +45,9 @@ module.exports = class extends Generator {
         type: 'input',
         name: 'projectName',
         message: 'Your project id:',
-        default: this.appname, // Default to current folder name
-        store: true
+        default: this.appname.replace(/ /gi, '-'), // Default to current folder name
+        store: true,
+        validate: (name) => !/ /gi.test(name), // без пробелов
       },
       {
         type: 'input',
