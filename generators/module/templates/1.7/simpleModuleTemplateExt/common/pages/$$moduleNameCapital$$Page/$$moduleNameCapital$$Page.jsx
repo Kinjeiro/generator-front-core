@@ -13,11 +13,18 @@ import MODULE_NAME from '../../module-name';
 import {
   getPath<%=moduleNameCapital%>,
 } from '../../routes-paths-<%=moduleNameKebab%>';
+import {
+  actions as actions<%=moduleNameCapital%>,
+} from '../../redux-<%=moduleNameKebab%>';
+import {
+  get<%=moduleNameCapital%>Info,
+} from '../../redux-selectors-<%=moduleNameKebab%>';
 
 import getComponents from '../../get-components';
 
 const {
   Button,
+  Loading,
 } = getComponents();
 
 require('./<%=moduleNameCapital%>Page.scss');
@@ -26,7 +33,11 @@ require('./<%=moduleNameCapital%>Page.scss');
 @connect(
   (globalState, props) => ({
     userId: getUserId(globalState),
+    info: get<%=moduleNameCapital%>Info(globalState),
   }),
+  {
+    actionLoad<%=moduleNameCapital%>: actions<%=moduleNameCapital%>.actionLoad<%=moduleNameCapital%>,
+  },
 )
 @titled('<%=moduleNameCapital%>Page', '<%=moduleNameCapital%> page')
 export default class <%=moduleNameCapital%>Page extends Component {
@@ -40,17 +51,24 @@ export default class <%=moduleNameCapital%>Page extends Component {
     // ======================================================
     // CONNECT
     // ======================================================
-    // userId: PropTypes.string,
-
-    // ======================================================
-    // ACTIONS
-    // ======================================================
+    userId: PropTypes.string,
+    info: PropTypes.any,
+    actionLoad<%=moduleNameCapital%>: PropTypes.func,
   };
 
   // ======================================================
   // LIFECYCLE
   // ======================================================
-  // componentWillReceiveProps(newProps) {
+  componentDidMount() {
+    const {
+      actionLoad<%=moduleNameCapital%>
+    } = this.props;
+
+    actionLoad<%=moduleNameCapital%>();
+  }
+  // componentDidUpdate(prevProps, prevState, snapshot) {
+  //   const {
+  //   } = this.props;
   // }
 
   // ======================================================
