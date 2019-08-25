@@ -9,6 +9,8 @@
 
 ## Подготовка
 1. Установить Node JS 9.0.0+
+2. npm install -g cross-env
+3. npm install -g windows-build-tools - если у вас винда (https://github.com/nodejs/node-gyp/issues/802)
 
 ## Генератор приложения
 1. Установить [Yeoman](http://yeoman.io) и наш генератор [generator-front-core](https://github.com/kinjeiro/generator-front-core)
