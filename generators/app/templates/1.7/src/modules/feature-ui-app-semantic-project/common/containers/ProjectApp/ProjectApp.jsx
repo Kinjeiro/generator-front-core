@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 import { getModulesRoutePrefixes } from '@reagentum/front-core/lib/common/app-redux/selectors';
 
-import i18n from '../../../modules/module-core/utils/i18n';
+import i18n from '../../../../module-core/utils/i18n';
 
 import {
   getUserMenu,

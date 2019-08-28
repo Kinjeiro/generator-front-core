@@ -1,22 +1,12 @@
 let CB = null;
 
 export function initComponents(COMPONENTS_BASE) {
-  require('./app-styles/init.scss');
+  require('../../../common/app-styles/init.scss');
 
-  COMPONENTS_BASE.addClassName('FieldLayout', () => {
-    require('./components/form/FieldLayout.scss');
-    return 'FieldLayoutProject';
-  });
-  COMPONENTS_BASE.addClassName('FormLayout', () => {
-    require('./components/form/FormLayout.scss');
-    return 'FormLayoutProject';
-  });
-  COMPONENTS_BASE.addInitCallback('Button', () => require('./components/Button.scss'));
-  COMPONENTS_BASE.addInitCallback('Tabs', () => require('./components/Tabs.scss'));
+  // ======================================================
+  // COMPONENTS
+  // ======================================================
   COMPONENTS_BASE.addInitCallback('AppHeader', () => require('./components/AppHeader.scss'));
-  COMPONENTS_BASE.addInitCallback('Modal', () => require('./components/Modal.scss'));
-  COMPONENTS_BASE.addInitCallback('Sidebar', () => require('./components/Sidebar.scss'));
-  COMPONENTS_BASE.addInitCallback('Segment', () => require('./components/Segment.scss'));
 
   // ======================================================
   // CONTAINERS

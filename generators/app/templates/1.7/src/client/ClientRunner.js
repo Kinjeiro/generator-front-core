@@ -1,7 +1,6 @@
 /* eslint-disable global-require,no-param-reassign,max-len */
 import ParentClientRunner from '@reagentum/frontCore_Components/lib/client/ClientRunner';
 
-import { initComponents } from '../common/get-components';
 import { initComponents as toCoreInitComponents } from '../module-to-front-core/common/get-components';
 
 export default class ClientRunner extends ParentClientRunner {
@@ -14,8 +13,7 @@ export default class ClientRunner extends ParentClientRunner {
 
   initComponents(COMPONENTS_BASE) {
     super.initComponents(COMPONENTS_BASE);
-    toCoreInitComponents(COMPONENTS_BASE);
-    return initComponents(COMPONENTS_BASE);
+    return toCoreInitComponents(COMPONENTS_BASE);
   }
 
   // ROUTING
