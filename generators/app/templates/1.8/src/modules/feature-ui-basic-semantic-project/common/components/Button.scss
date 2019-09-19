@@ -1,0 +1,38 @@
+@import "../../../../common/app-styles/vars";
+
+.ui.button,
+.Button.ui.button {
+  background: transparent;
+  color: $color-default-text;
+  border: 1px solid $color-border;
+  border-radius: 0;
+  font-size: $font-size;
+  font-family: $font-family;
+  font-weight: normal;
+
+  &:hover {
+    border: 1px solid $color-border-hover;
+  }
+  &:disabled {
+    background: transparent;
+    color: lighten($color-default-text, 20%);
+  }
+
+  &.primary {
+    background: $color-primary;
+    color: $color-primary-text;
+
+    &:disabled {
+      background: lighten($color-primary, 20%);
+      color: lighten($color-primary-text, 20%);
+    }
+    &:focus,
+    &:hover {
+      background: darken($color-primary, 5%);
+    }
+  }
+}
+
+.ui.buttons .button:first-child {
+  border-left: 1px solid #98989A;
+}

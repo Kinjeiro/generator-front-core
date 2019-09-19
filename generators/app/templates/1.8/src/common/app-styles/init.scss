@@ -1,0 +1,73 @@
+@import "./vars";
+@import "./mixins";
+@import "./fonts/fonts";
+
+html,
+h1, h2, h3, h4, h5 {
+  line-height: $font-line-height;
+  font-family: $font-family, "Roboto Regular", Roboto;
+}
+html {
+  font-size: $font-size-base-mobile;
+}
+@include respond-to('md') {
+  html {
+    font-size: $font-size-base;
+  }
+}
+
+// semantic
+body {
+  line-height: $font-line-height;
+  // todo @ANKU @LOW @BUG_OUT @semnatic-ui -
+  //min-width: 320px;
+  min-width: inherit;
+}
+
+h1 { font-size: $font-size-h1 }
+h2 { font-size: $font-size-h2 }
+h3 { font-size: $font-size-h3 }
+h4 { font-size: $font-size-h4 }
+h5 { font-size: $font-size-h5 }
+h6 { font-size: $font-size-h6 }
+h1, h2, h3, h4, h5, h6 {
+  font-weight: $font-weight-header
+}
+
+input,
+textarea {
+  border-radius: 0;
+}
+textarea {
+  width: 100%;
+}
+
+button, input, optgroup, select, textarea {
+  font-family: $font-family;
+}
+
+.ui.input.focus input,
+.ui.input input:focus {
+  border-color: $color-border-hover;
+}
+
+.ui.header {
+  font-family: $font-family;
+}
+
+.ui.segment {
+  height: auto;
+  //min-height: 100%;
+}
+
+
+.ui.avatar.images .image,
+.ui.avatar.images img,
+.ui.avatar.images svg,
+.ui.avatar.image img,
+.ui.avatar.image svg,
+.ui.avatar.image {
+  min-width: 2em;
+}
+
+

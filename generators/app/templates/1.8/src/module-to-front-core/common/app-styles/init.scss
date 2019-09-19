@@ -1,0 +1,40 @@
+@import "../../../common/app-styles/vars";
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: $color-placeholder;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: $color-placeholder;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: $color-placeholder;
+}
+::-moz-placeholder { /* Firefox 19- */
+  opacity: 1;
+  color: $color-placeholder;
+}
+:-moz-placeholder { /* Firefox 18- */
+  opacity: 1;
+  color: $color-placeholder;
+}
+::placeholder {
+  color: $color-placeholder;
+}
+
+
+
+//textarea {
+//  outline-width: 1px;
+//  outline-style: solid;
+//  //outline-color: Highlight;
+//  outline-color: $color-border-hover;
+//}
+//
+///* WebKit gets its native focus styles.
+// */
+//@media (-webkit-min-device-pixel-ratio:0) {
+//  textarea {
+//    outline-color: -webkit-focus-ring-color;
+//    outline-style: auto;
+//  }
+//}
