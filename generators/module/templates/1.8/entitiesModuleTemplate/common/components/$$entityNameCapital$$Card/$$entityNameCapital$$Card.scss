@@ -1,0 +1,61 @@
+@import "../../../../../common/app-styles/vars";
+
+.ui.cards > .ui.card.<%=entityNameCapital%>Card {
+  border: none;
+  box-shadow: none;
+}
+
+// todo @ANKU @LOW - @BUT_OUT @semantic-ui - .ui.cards > .card > :first-child, .ui.card > :first-child - important используют
+.ui.cards > .card > :first-child,
+.ui.card > :first-child {
+  border-top: 1px solid $color-border !important;
+  border-radius: 0 !important;
+}
+
+// todo @ANKU @LOW - @BUT_OUT @semantic-ui
+.ui.cards > .card > .content,
+.ui.card > .content {
+  padding: 0;
+  margin: 0;
+}
+
+.ui.cards > .card > .content > .header:not(.ui),
+.ui.card > .content > .header:not(.ui) {
+  font-size: 1em;
+  margin: 0.5em 0;
+}
+
+.<%=entityNameCapital%>Card {
+  &__image {
+    border: 1px solid $color-border;
+
+    img.ui.image {
+      height: 200px;
+      width: 200px;
+    }
+  }
+
+  &__content {
+  }
+
+  &__name {
+    //margin: 0.5em 0;
+    .Link {
+      color: $color-default-text;
+      text-decoration: none;
+      font-size: 1em;
+      font-weight: normal;
+    }
+  }
+
+  &__money {
+    margin-top: 0.3em;
+    font-weight: 800;
+    color: $color-default-text;
+  }
+
+  &__editButton.ui.button {
+    width: 100%;
+    margin-top: 0.5em;
+  }
+}
