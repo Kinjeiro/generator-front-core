@@ -40,15 +40,15 @@ export const TYPES = {
 // ACTION CREATORS
 // ======================================================
 export function getBindActions({
-  apiLoad<%=entityNameCapital%>,
   apiCreate<%=entityNameCapital%>,
-  apiEdit<%=entityNameCapital%>,
+  apiRead<%=entityNameCapital%>,
+  apiUpdate<%=entityNameCapital%>,
 }) {
   return {
     actionLoad<%=entityNameCapital%>(<%=entityNameCamel%>Id) {
       return {
         types: [TYPES.LOAD_<%=entityNameUpper%>_FETCH, TYPES.LOAD_<%=entityNameUpper%>_SUCCESS, TYPES.LOAD_<%=entityNameUpper%>_FAIL],
-        payload: apiLoad<%=entityNameCapital%>(<%=entityNameCamel%>Id),
+        payload: apiRead<%=entityNameCapital%>(<%=entityNameCamel%>Id),
       };
     },
     actionCreate<%=entityNameCapital%>(<%=entityNameCamel%>Data, filesMap = null) {
@@ -60,7 +60,7 @@ export function getBindActions({
     actionEdit<%=entityNameCapital%>(id, <%=entityNameCamel%>Data) {
       return {
         types: [TYPES.EDIT_<%=entityNameUpper%>_FETCH, TYPES.EDIT_<%=entityNameUpper%>_SUCCESS, TYPES.EDIT_<%=entityNameUpper%>_FAIL],
-        payload: apiEdit<%=entityNameCapital%>(id, <%=entityNameCamel%>Data),
+        payload: apiUpdate<%=entityNameCapital%>(id, <%=entityNameCamel%>Data),
       };
     },
     actionClear<%=entityNameCapital%>() {

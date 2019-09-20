@@ -7,25 +7,73 @@ import CoreService from '@reagentum/front-core/lib/server/services/utils/CoreSer
  * по умолчанию serverConfig.server.endpointServices.middlewareApiService
  */
 export default class Service<%=moduleNameCapital%> extends CoreService {
-  async load<%=moduleNameCapital%>(query = {}) {
-    // return this.send('/products', query);
-    throw new Error('todo');
+  /**
+   @override
+
+   если его определить то все методы
+     innerFindRecords
+     findRecords
+     findRecordsWithPagination
+     createRecord
+     readRecord
+     updateRecord
+     deleteRecord
+     patchRecord
+     - заработают автоматом
+
+   * @return {null}
+   */
+  getCrudUrlsPrefix() {
+    return <%=moduleNameCamel%>;
   }
 
-  async load<%=entityNameCapital%>(id) {
-    // return this.sendWithApi(`/products/${id}`);
-    throw new Error('todo');
-  }
-
-  async add<%=entityNameCapital%>(data) {
-    throw new Error('todo');
-  }
-
-  async create<%=entityNameCapital%>(data, user) {
-    throw new Error('todo');
-  }
-
-  async edit<%=entityNameCapital%>(id, data) {
-    throw new Error('todo');
-  }
+  //   /**
+  //    * @override
+  //    *
+  //    * query: {
+  //    *   filters
+  //    *
+  //    *   search: PropTypes.string,
+  //        startPage: PropTypes.number,
+  //        itemsPerPage: PropTypes.number,
+  //        sortBy: PropTypes.string,
+  //        sortDesc: PropTypes.bool,
+  //    * }
+  //    */
+  // async innerFindRecords(query, searchFields, options = undefined, withPagination = false) {
+  //   const {
+  //   filters,
+  //   sortBy,
+  //   sortDesc,
+  //   search,
+  //
+  //   startPage: page,
+  //   itemsPerPage: pageSize,
+  // } = query;
+  //
+  //   const {
+  //   items,
+  //   pageCount,
+  //   pageNumber,
+  //   // pageSize,
+  //   totalItems,
+  // } = await this.sendWithAuth('/call-me-back', {
+  //   page,
+  //   pageSize,
+  // });
+  //
+  //   return createTableResponse(
+  //   // await this.serializeRecords(items, this.OPERATION_TYPE.FIND, options)),
+  //   items,
+  //   createMeta({
+  //   sortBy,
+  //   sortDesc,
+  //   search,
+  //
+  //   startPage: pageNumber,
+  //   itemsPerPage: pageSize,
+  // }),
+  //   totalItems,
+  //   );
+  // }
 }

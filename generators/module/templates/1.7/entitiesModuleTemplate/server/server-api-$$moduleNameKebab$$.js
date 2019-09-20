@@ -5,7 +5,7 @@ import { API_CONFIGS } from '../common/api-<%=moduleNameKebab%>';
 export default function getServerApi() {
   return [
     apiPluginFactory(
-      API_CONFIGS.load<%=moduleNameCapital%>,
+      API_CONFIGS.find<%=moduleNameCapital%>,
       async (requestData, request, reply) => {
         const {
           user: {
@@ -48,7 +48,7 @@ export default function getServerApi() {
     ),
 
     apiPluginFactory(
-      API_CONFIGS.edit<%=entityNameCapital%>,
+      API_CONFIGS.update<%=entityNameCapital%>,
       async (requestData, request, reply) => {
         const {
           params: {
@@ -59,6 +59,21 @@ export default function getServerApi() {
           },
         } = request;
         return reply(service<%=moduleNameCapital%>.updateRecord(id, requestData));
+      },
+    ),
+
+    apiPluginFactory(
+      API_CONFIGS.delete<%=entityNameCapital%>,
+      async (requestData, request, reply) => {
+        const {
+          params: {
+            id,
+          },
+          services: {
+            service<%=moduleNameCapital%>,
+          },
+        } = request;
+        return reply(service<%=moduleNameCapital%>.deleteRecord(id));
       },
     ),
   ];
