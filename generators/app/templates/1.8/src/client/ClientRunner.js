@@ -1,19 +1,12 @@
 /* eslint-disable global-require,no-param-reassign,max-len */
 import ParentClientRunner from '@reagentum/frontCore_Components/lib/client/ClientRunner';
 
-import { initComponents as toCoreInitComponents } from '../module-to-front-core/common/get-components';
-
 export default class ClientRunner extends ParentClientRunner {
   loadCommonSubModulesContexts() {
     return [
       ...super.loadCommonSubModulesContexts(),
       require.context('../modules', true, /^\.\/(.*)\/common\/index\.js/gi),
     ];
-  }
-
-  initComponents(COMPONENTS_BASE) {
-    super.initComponents(COMPONENTS_BASE);
-    return toCoreInitComponents(COMPONENTS_BASE);
   }
 
   // ROUTING

@@ -32,26 +32,19 @@ module.exports = {
       // }
     },
     endpointServices: {
+      // KEYCLOAK - протокол oauth2.0 / openconnect id (OCID)
       serviceAuth: createEndpointServiceConfig({
-        host: 'dev.reagentum.ru',
         protocol: 'https',
-        port: 1338,
-        endpoint: 'api',
-        requestOptions: {
-          // игнорировать, что сертификат не подписан
-          rejectUnauthorized: false
-        }
+        host: '185.22.63.233',
+        port: 443,
+        endpoint: 'auth'
       }),
       serviceUsers: createEndpointServiceConfig({
-        host: 'dev.reagentum.ru',
         protocol: 'https',
-        port: 1338,
-        endpoint: 'api',
-        requestOptions: {
-          // игнорировать, что сертификат не подписан
-          rejectUnauthorized: false
-        }
-      })
+        host: '185.22.63.233',
+        port: 443,
+        endpoint: 'auth'
+      }),
     }
   }
 };
