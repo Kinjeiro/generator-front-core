@@ -1,4 +1,5 @@
 'use strict';
+const { kebabCase } = require('lodash');
 const chalk = require('chalk');
 const yosay = require('yosay');
 const path = require('path');
@@ -89,14 +90,19 @@ module.exports = class extends Generator {
       }
     ]);
 
+    const {
+      projectName,
+    } = answers;
     this.answers = answers;
+
     this.props = {
       stub: '',
       privateNpmKey: null,
       pathToCoreLib: null,
       pathToCoreComponentsLib: null,
       ...this.props,
-      ...this.answers
+      ...this.answers,
+      projectNameKebab: kebabCase(projectName)
     };
   }
 
