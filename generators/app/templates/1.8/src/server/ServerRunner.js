@@ -10,7 +10,12 @@ import {
 
 import ParentServerRunner from '@reagentum/frontCore_Components/lib/server/ServerRunner';
 
+// import moduleLanding from '../modules/module-landing/common';
+// import moduleRegister from '../modules/module-register/common';
+
 import ClientRunner from '../client/ClientRunner';
+
+import preLoader from './pre-loader';
 
 export default class ServerRunner extends ParentServerRunner {
   loadServerSubModules() {
@@ -31,9 +36,16 @@ export default class ServerRunner extends ParentServerRunner {
     return new ClientRunner();
   }
 
+  getPreLoader() {
+    return preLoader;
+  }
+
   getRoutePath(moduleName, path) {
     // return getModuleFullPath(path, moduleName, this.getModuleToRoutePrefixMap());
-    return joinPath(this.getModuleRoutePrefix(moduleName), path);
+    const modulePrefix = this.getModuleRoutePrefix(moduleName);
+    return path !== '/'
+      ? joinPath(modulePrefix, path)
+      : modulePrefix;
   }
 
   /**
@@ -43,11 +55,15 @@ export default class ServerRunner extends ParentServerRunner {
    */
   @bind()
   noNeedCredentialsPageMatcher(pathnameWithoutContextPath) {
-    // const need = testAppUrlStartWith(
+    // const noNeed =
+    //   pathnameWithoutContextPath === '/' // index
+    //   || testAppUrlStartWith(
     //   pathnameWithoutContextPath,
-    //   this.getRoutePath(moduleProfile.MODULE_NAME, moduleProfile.paths.PATH_PROFILE_SETTINGS),
-    // );
-    // return !need || super.noNeedCredentialsPageMatcher(pathnameWithoutContextPath);
+    //   this.getRoutePath(moduleLanding.MODULE_NAME, moduleLanding.paths.PATH_LANDING_INDEX),
+    //   this.getRoutePath(moduleRegister.MODULE_NAME, moduleRegister.paths.PATH_REGISTER_INDEX),
+    //   );
+    //
+    // return noNeed || super.noNeedCredentialsPageMatcher(pathnameWithoutContextPath);
     return super.noNeedCredentialsPageMatcher(pathnameWithoutContextPath);
   }
 }
