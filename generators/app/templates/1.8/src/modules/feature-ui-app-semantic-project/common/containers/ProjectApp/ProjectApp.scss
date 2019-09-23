@@ -3,16 +3,6 @@
 
 .ProjectApp {
   height: 100%;
-
-  //&__searchInHeader {
-  //
-  //}
-  &__searchInContent {
-    .SearchProduct__search {
-      max-width: none;
-      width: 100%;
-    }
-  }
 }
 
 .AppLayout {
@@ -25,40 +15,14 @@
   &__headerWrapper {
     background-color: $color-default-background;
 
-    @include respond-to('lg') {
-      .UserName--notAuth {
-        margin: 0 1em;
-      }
-    }
+    //@include respond-to('lg') {
+    //  .UserName--notAuth {
+    //    margin: 0 1em;
+    //  }
+    //}
   }
 
-  &__footerWrapper {
-    padding: 0;
-  }
-}
-
-.UserMenuItem {
-  &__userInfo {
-    .UserAvatar {
-      margin-right: 1em;
-      height: 2em;
-      width: 2em;
-    }
-  }
-  &__right {
-    display: inline-block;
-  }
-  &__displayName {
-    font-weight: 800;
-  }
-}
-.ui.dropdown .menu > .item.UserMenuItem {
-  border-bottom: 1px solid $color-border-menu;
-}
-
-.ui.dropdown > .text > img,
-.ui.dropdown > .text > .image,
-.ui.dropdown .menu > .item.UserMenuItem > .image,
-.ui.dropdown .menu > .item.UserMenuItem > img {
-  vertical-align: super;
+  //&__footerWrapper {
+  //  padding: 0;
+  //}
 }

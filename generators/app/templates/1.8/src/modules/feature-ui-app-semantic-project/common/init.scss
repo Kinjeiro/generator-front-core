@@ -1,6 +1,6 @@
-@import "./vars";
-@import "./mixins";
-@import "./fonts/fonts";
+@import "../../../common/app-styles/vars";
+@import "../../../common/app-styles/mixins";
+@import "../../../common/app-styles/fonts/fonts";
 
 html,
 h1, h2, h3, h4, h5 {
@@ -71,3 +71,14 @@ button, input, optgroup, select, textarea {
 }
 
 
+// todo @ANKU @LOW - вынести это в генератореё
+.ui.dropdown .menu > .item.UserMenuItem {
+  border-bottom: 1px solid $color-border-menu;
+}
+
+.ui.dropdown > .text > img,
+.ui.dropdown > .text > .image,
+.ui.dropdown .menu > .item.UserMenuItem > .image,
+.ui.dropdown .menu > .item.UserMenuItem > img {
+  vertical-align: super;
+}

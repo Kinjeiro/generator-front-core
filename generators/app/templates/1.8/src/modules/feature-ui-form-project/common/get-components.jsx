@@ -1,8 +1,6 @@
 let CB = null;
 
 export function initComponents(COMPONENTS_BASE) {
-  require('../../../common/app-styles/init.scss');
-
   // COMPONENTS_BASE.addClassName('FieldLayout', () => {
   //   require('./components/form/FieldLayout.scss');
   //   return 'FieldLayoutProject';
