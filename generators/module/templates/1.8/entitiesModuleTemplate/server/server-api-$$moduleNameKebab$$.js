@@ -20,7 +20,7 @@ export default function getServerApi() {
     ),
 
     apiPluginFactory(
-      API_CONFIGS.load<%=entityNameCapital%>,
+      API_CONFIGS.read<%=entityNameCapital%>,
       async (requestData, request, reply) => {
         const {
           params: {

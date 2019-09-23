@@ -56,16 +56,16 @@ class ModuleGenerator extends Generator {
         choices: MODULE_TYPES,
         default: MODULE_TYPES[0]
       },
-      {
-        type: 'input',
-        name: 'entitiesName',
-        message: ({ moduleType }) => (
-          moduleType === MODULE_TYPES_MAP.ENTITIES_MODULE
-          ? 'Your entities name (multiple, like as "Cars"):'
-          : 'Your module name:'
-        ),
-        validate: validateRequire
-      },
+      // {
+      //   type: 'input',
+      //   name: 'entitiesName',
+      //   message: ({ moduleType }) => (
+      //     moduleType === MODULE_TYPES_MAP.ENTITIES_MODULE
+      //     ? 'Your entities name (multiple, like as "Cars"):'
+      //     : 'Your module name:'
+      //   ),
+      //   validate: validateRequire
+      // },
       {
         type: 'input',
         name: 'moduleName',
