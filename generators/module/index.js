@@ -5,6 +5,10 @@ const { camelCase, capitalize, kebabCase, snakeCase } = require('lodash');
 const Generator = require('yeoman-generator');
 // Const Generator = require('../UniGenerator');
 
+const packageJson = require(path.resolve(__dirname, '../../package.json'));
+const APP_ID = packageJson.name;
+const APP_VERSION = packageJson.version;
+
 const {
   validateRequire,
   commonWriting
@@ -33,7 +37,7 @@ class ModuleGenerator extends Generator {
   async prompting() {
     // Have Yeoman greet the user.
     this.log(
-      yosay('Welcome to the tiptop ' + chalk.red('generator-front-core') + ' generator!')
+      yosay('Welcome to the\n' + chalk.red('generator-front-core' + '\n v ' + APP_VERSION) + ' generator!')
     );
 
     const answers = await this.prompt([
@@ -50,6 +54,16 @@ class ModuleGenerator extends Generator {
         message: 'What module type do you want:',
         choices: MODULE_TYPES,
         default: MODULE_TYPES[0]
+      },
+      {
+        type: 'input',
+        name: 'entitiesName',
+        message: ({ moduleType }) => (
+          moduleType === MODULE_TYPES_MAP.ENTITIES_MODULE
+          ? 'Your entities name (multiple, like as "Cars"):'
+          : 'Your module name:'
+        ),
+        validate: validateRequire
       },
       {
         type: 'input',
