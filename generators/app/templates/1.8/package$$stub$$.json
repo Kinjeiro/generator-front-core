@@ -79,8 +79,10 @@
     "@reagentum/frontCore_Components": "file:./coreLibs/frontCore_Components",
 <% } %>
     "config": "github:kinjeiro/node-config",
-    "git-branch-is": "~2.1.0"
-  },
+    "git-branch-is": "~2.1.0",
+    "react": "~16.4.0",
+    "react-dom": "~16.4.0"
+},
   "// devDependencies copy from front-core": "",
   "devDependencies": {
 
