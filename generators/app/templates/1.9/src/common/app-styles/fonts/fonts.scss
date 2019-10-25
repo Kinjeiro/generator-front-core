@@ -1,0 +1,52 @@
+/*
+OTF convert to web formats - https://onlinefontconverter.com/
+
+https://css-tricks.com/snippets/css/using-font-face/
+
+@font-face {
+  font-family: 'MyWebFont';
+= IE9 Compat Modes
+  src: url('webfont.eot');
+= IE6-IE8
+  src: url('webfont.eot?#iefix') format('embedded-opentype'),
+= Super Modern Browsers
+    url('webfont.woff2') format('woff2'),
+= Pretty Modern Browsers
+    url('webfont.woff') format('woff'),
+= Safari, Android, iOS
+    url('webfont.ttf')  format('truetype'),
+= Legacy iOS
+    url('webfont.svg#svgFontName') format('svg');
+}
+
+Можно загрузать удаленно
+@import url(//fonts.googleapis.com/css?family=Open+Sans);
+или
+<link href='//fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+*/
+/*
+100 — Thin / Extra Thin / Hairline
+200 — Extra Light / Ultra Light
+300 — Light
+400 — Regular (Normal)
+500 — Medium
+600 — Semi Bold / Demi Bold
+700 — Bold
+800 — Extra Bold / Ultra Bold
+900 — Black / Ultra Black / Heavy
+*/
+
+//@font-face {
+//  font-family: 'TT Norms';
+//  src:  url('./TT_Norms/TTNorms-Regular.woff2') format('woff2'),
+//        url('./TT_Norms/TTNorms-Regular.woff') format('woff'),
+//        url('./TT_Norms/TTNorms-Regular.ttf') format('truetype');
+//  font-weight: normal;
+//  font-style: normal;
+//}
+

@@ -1,0 +1,87 @@
+@import "../../../../../common/app-styles/vars";
+
+.FieldLayout {
+  display: block;
+
+  &--touched {
+    :invalid {
+      border: 1px solid $color-error-border;
+    }
+    input:focus:invalid,
+    textarea:focus:invalid {
+      border: 1px solid $color-error-border;
+    }
+
+    //.ui.input {
+    //  :invalid {
+    //    border: 1px solid $color-error-border;
+    //  }
+    //
+    //  &.focus input:invalid,
+    //  &.focus textarea:invalid,
+    //  input:focus:invalid,
+    //  textarea:focus:invalid {
+    //    border: 1px solid $color-error-border;
+    //  }
+    //}
+  }
+
+  &__label {
+    font-weight: $font-weight-label;
+    margin-bottom: 0.5em;
+    display: block;
+    max-width: 100%;
+  }
+
+  &__content {
+    max-width: 100%;
+  }
+
+  &__control {
+    margin-bottom: 0.5em;
+
+    input,
+    textarea {
+      border-radius: 3px;
+      border: 1px solid $color-border;
+      box-shadow: 0 0 1px $color-border;
+
+      &:focus {
+        outline: none !important;
+        border: 1px solid $color-border-hover;
+        box-shadow: 0 0 1px $color-border-hover;
+      }
+    }
+
+    //::selection {
+    //  background-color: $color-border-hover;
+    //  //color: #000000de;
+    //}
+
+    //.ui.input {
+    //  border-color: $color-border;
+    //  box-shadow: 0 0 1px $color-border;
+    //
+    //  &.focus input,
+    //  &.focus textarea,
+    //  input:focus,
+    //  textarea:focus {
+    //    border-color: $color-border-hover;
+    //    box-shadow: 0 0 1px $color-border-hover;
+    //  }
+    //}
+  }
+
+  .ui.button.Attachment__addButton {
+    width: 100%;
+  }
+}
+
+:not(.CoreField--required) > .FieldLayout__label {
+  &:after {
+    // todo @ANKU @LOW - может потом сделаем локализацию и вынесем этот кусок в js
+    content: '(необязательно)';
+    font-weight: normal;
+    margin-left: 0.2em;
+  }
+}

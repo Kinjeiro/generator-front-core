@@ -1,0 +1,15 @@
+.TabsLayout {
+  &__tabs {
+    &.ui.buttons .button:first-child {
+      border-left: none;
+    }
+  }
+
+  .Tabs {
+    font-size: inherit;
+  }
+
+  &__content {
+    margin-top: 2em;
+  }
+}

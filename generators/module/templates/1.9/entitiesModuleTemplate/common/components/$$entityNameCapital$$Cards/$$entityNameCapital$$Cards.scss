@@ -1,0 +1,19 @@
+.<%=entityNameCapital%>Cards {
+  min-height: 400px; // один ряд - чтобы скроллинг не прыгал
+
+  .ui.cards {
+    margin: 0;
+    // justify-content: center;
+
+    & > .card,
+    .ui.card {
+      width: 200px;
+      margin-left: 0;
+      margin-right: 1em;
+    }
+  }
+
+  &__pagination {
+    text-align: center;
+  }
+}

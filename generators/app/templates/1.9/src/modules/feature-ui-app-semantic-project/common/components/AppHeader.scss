@@ -1,0 +1,55 @@
+@import "../init";
+@import "../../../../common/app-styles/mixins";
+
+.AppHeader {
+  //grid-template-columns:
+  //  [first-part] auto
+  //  [sidebar-icon-part] auto
+  //  [logo-part] auto
+  //  [title-part] auto
+  //  [left-part] 1fr
+  //  [user-part] auto
+  //  [right-part] auto
+  //  [end];
+  //-ms-grid-columns: auto auto auto auto 1fr auto auto;
+  //
+  //.TitlePart__title {
+  //  font-size: $font-size-logo;
+  //
+  //  @include respond-to('md') {
+  //    font-size: $font-size-logo-big;
+  //    line-height: $font-line-height;
+  //  }
+  //}
+  //
+  //&__leftPart {
+  //  margin-right: 1em;
+  //  justify-content: space-between;
+  //}
+  //
+  //&__rightPart {
+  //  margin-left: 1em;
+  //  text-align: right;
+  //}
+  //
+  //.Link {
+  //  text-decoration: none;
+  //  color: $color-default-text;
+  //
+  //  //&:hover {
+  //  //  text-decoration: underline;
+  //  //}
+  //}
+  //
+  //.UserPart__name {
+  //  height: 2em;
+  //  width: 2em;
+  //}
+  //.Username--noAuth {
+  //  height: auto;
+  //  width: auto;
+  //}
+  //.UserName__displayName {
+  //  display: none;
+  //}
+}
