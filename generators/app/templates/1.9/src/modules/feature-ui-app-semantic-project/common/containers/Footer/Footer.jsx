@@ -95,7 +95,7 @@ export default class Footer extends PureComponent {
         </div>
         <div className="Footer__socialRow">
           <div className="Footer__logo">
-            2018 Проект
+            2019 Проект
           </div>
           <div className="Footer__social">
             <div className="icon social vk" />

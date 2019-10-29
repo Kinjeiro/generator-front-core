@@ -24,7 +24,7 @@ export default class Service<%=moduleNameCapital%> extends CoreService {
    * @return {null}
    */
   getCrudUrlsPrefix() {
-    return <%=moduleNameCamel%>;
+    return '<%=moduleNameCamel%>';
   }
 
   //   /**

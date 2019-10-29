@@ -1,8 +1,6 @@
 let CB = null;
 
 export function initComponents(COMPONENTS_BASE) {
-  require('./init.scss');
-
   // ======================================================
   // COMPONENTS
   // ======================================================

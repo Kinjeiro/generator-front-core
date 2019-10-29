@@ -11,31 +11,4 @@ export default class Service<%=moduleNameCapital%>Mock extends CoreServiceMock {
   async getData() {
     return <%=moduleNameUpper%>;
   }
-
-  async load<%=moduleNameCapital%>(query = {}) {
-    return this.loadRecords(query);
-  }
-
-  async load<%=entityNameCapital%>(id) {
-    return this.loadRecord(id);
-  }
-
-  async add<%=entityNameCapital%>(data) {
-    return this.addRecord(data);
-  }
-
-  async create<%=entityNameCapital%>(data, user) {
-    const {
-      userId,
-      displayName,
-    } = user;
-
-    return this.addRecord({
-      ...data,
-    });
-  }
-
-  async edit<%=entityNameCapital%>(id, data) {
-    return this.editRecord(id, data);
-  }
 }
