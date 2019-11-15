@@ -7,6 +7,8 @@ import CoreService from '@reagentum/front-core/lib/server/services/utils/CoreSer
  * по умолчанию serverConfig.server.endpointServices.middlewareApiService
  */
 export default class Service<%=moduleNameCapital%> extends CoreService {
+  serviceName = 'Service<%=moduleNameCapital%>';
+
   /**
    @override
 

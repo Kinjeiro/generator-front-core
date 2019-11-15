@@ -8,6 +8,8 @@ export const <%=moduleNameUpper%> = {
 };
 
 export default class Service<%=moduleNameCapital%>Mock extends CoreServiceMock {
+  serviceName = 'Service<%=moduleNameCapital%>Mock';
+
   async getData() {
     return <%=moduleNameUpper%>;
   }
