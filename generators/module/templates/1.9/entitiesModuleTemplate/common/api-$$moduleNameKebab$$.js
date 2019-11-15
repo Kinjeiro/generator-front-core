@@ -8,14 +8,14 @@ export const API_PREFIX = '<%=moduleNameCamel%>';
 const crud = createCrudApi(API_PREFIX, sendApi);
 
 export const API_CONFIGS = {
-  find<%=moduleNameCapital%>: crud.API_CONFIGS.loadRecords,
+  find<%=moduleNameCapital%>: crud.API_CONFIGS.findRecords,
   create<%=entityNameCapital%>: crud.API_CONFIGS.createRecord,
   read<%=entityNameCapital%>: crud.API_CONFIGS.readRecord,
   update<%=entityNameCapital%>: crud.API_CONFIGS.updateRecord,
   delete<%=entityNameCapital%>: crud.API_CONFIGS.deleteRecord,
 };
 
-export const apiFind<%=moduleNameCapital%> = crud.apiLoadRecords;
+export const apiFind<%=moduleNameCapital%> = crud.apiFindRecords;
 export const apiCreate<%=entityNameCapital%> = crud.apiCreateRecord;
 export const apiRead<%=entityNameCapital%> = crud.apiReadRecord;
 export const apiUpdate<%=entityNameCapital%> = crud.apiUpdateRecord;

@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-// import bind from 'lodash-decorators/bind';
 
 import contextModules from '@reagentum/front-core/lib/common/contexts/ContextModules/decorator-context-modules';
 import titled from '@reagentum/front-core/lib/common/utils/decorators/react-class/titled';
@@ -54,16 +53,19 @@ export default class <%=entityNameCapital%>Page extends PureComponent {
     // PROPS
     // ======================================================
     className: PropTypes.string,
+
     // ======================================================
     // query
     // ======================================================
     <%=entityNameCamel%>Id: PropTypes.number,
+
     // ======================================================
     // @connect
     // ======================================================
     <%=entityNameCamel%>: <%=entityNameUpper%>_PROP_TYPE,
     actionLoad<%=entityNameCapital%>Status: ACTION_STATUS_PROP_TYPE,
     actionLoad<%=entityNameCapital%>: PropTypes.func,
+
     // ======================================================
     // @contextModules
     // ======================================================
@@ -83,18 +85,27 @@ export default class <%=entityNameCapital%>Page extends PureComponent {
     } = this.props;
     actionLoad<%=entityNameCapital%>(<%=entityNameCamel%>Id);
   }
-  // componentWillReceiveProps(newProps) {
-  // }
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    const {
+      <%=entityNameCamel%>Id,
+      actionLoad<%=entityNameCapital%>,
+    } = this.props;
+
+    if (<%=entityNameCamel%>Id !== prevProps.<%=entityNameCamel%>Id) {
+      actionLoad<%=entityNameCapital%>(<%=entityNameCamel%>Id);
+    }
+  }
 
 
   // ======================================================
   // HANDLERS
   // ======================================================
-  // @bind()
+
 
   // ======================================================
   // RENDERS
   // ======================================================
+
 
   // ======================================================
   // MAIN RENDER
@@ -108,12 +119,6 @@ export default class <%=entityNameCapital%>Page extends PureComponent {
       className,
       onGoTo,
     } = this.props;
-
-    if (!<%=entityNameCamel%> || isFetching) {
-      return (
-        <Loading />
-      );
-    }
 
     const {
       id,
