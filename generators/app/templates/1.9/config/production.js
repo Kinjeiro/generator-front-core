@@ -13,6 +13,7 @@ module.exports = {
       mocking: {
         enable: true,
         useMocks: false,
+        // useMocksInitData: true,
         authMock: false
       },
       auth: {
